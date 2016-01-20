@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SmartClinic.Infrastructure.CrossCutting.ContextInit;
-using SmartClinic.MVC.AutoMapper;
+using SmartClinic.Application.AutoMapper;
 
 namespace SmartClinic.MVC
 {

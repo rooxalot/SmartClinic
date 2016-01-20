@@ -8,7 +8,6 @@ using SmartClinic.Domain.Interfaces.BusinessServices;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
 using SmartClinic.Domain.BusinessServices;
 using System.Data.Entity;
-using Ninject;
 using SmartClinic.Data.Context;
 
 namespace SmartClinic.Infrastructure.IoC
