@@ -89,6 +89,8 @@ namespace SmartClinic.Application.AppServices
             return _appointmentService.GetPendingAppointments();
         }
 
+
+
         #endregion
     }
 }
