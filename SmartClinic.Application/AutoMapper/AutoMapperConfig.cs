@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace SmartClinic.MVC.AutoMapper
+namespace SmartClinic.Application.AutoMapper
 {
     public class AutoMapperConfig
     {

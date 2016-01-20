@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using SmartClinic.Application.ViewModels;
 using SmartClinic.Domain.Entities.Business;
-using SmartClinic.MVC.ViewModels;
 
-namespace SmartClinic.MVC.AutoMapper
+namespace SmartClinic.Application.AutoMapper
 {
     public class ViewModelToDomainMappingProfile : Profile
     {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SmartClinic.Domain.Enums;
 using SmartClinic.Domain.ValueObjects;
 
-namespace SmartClinic.MVC.ViewModels
+namespace SmartClinic.Application.ViewModels
 {
     public class DoctorViewModel
     {

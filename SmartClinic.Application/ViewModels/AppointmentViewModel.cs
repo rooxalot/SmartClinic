@@ -1,8 +1,8 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using SmartClinic.Domain.Enums;
+using System.ComponentModel.DataAnnotations;
 
-namespace SmartClinic.MVC.ViewModels
+namespace SmartClinic.Application.ViewModels
 {
     public class AppointmentViewModel
     {

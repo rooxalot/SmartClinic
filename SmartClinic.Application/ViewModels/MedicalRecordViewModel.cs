@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SmartClinic.MVC.ViewModels
+namespace SmartClinic.Application.ViewModels
 {
     public class MedicalRecordViewModel
     {

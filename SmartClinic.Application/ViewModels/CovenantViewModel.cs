@@ -1,7 +1,7 @@
 ﻿using System;
 using SmartClinic.Domain.ValueObjects;
 
-namespace SmartClinic.MVC.ViewModels
+namespace SmartClinic.Application.ViewModels
 {
     public class CovenantViewModel
     {
