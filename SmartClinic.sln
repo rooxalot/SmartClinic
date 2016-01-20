@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{3FC0FF17-A8F6-4F1D-B70B-3F87823FE9C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{85986DAD-40B7-424B-92A8-FF92FD59931D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{6800B57F-C74F-47CD-B5B3-AFA74158E7E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{E5369541-D44C-4D34-A315-3875015EDDF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infrastructure", "5 - Infrastructure", "{0FDAB687-0D98-4359-9622-4EBFC6AB3D47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", "{A806FB61-5A67-4BB5-BC2A-44A9FA2FCD1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{432EA58A-30B2-47D1-A3A6-8DD6FE912AA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.Domain", "SmartClinic.Domain\SmartClinic.Domain.csproj", "{2C0B9799-2532-4859-8424-8203A835A6EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.Infrastructure.Data", "SmartClinic.Data\SmartClinic.Infrastructure.Data.csproj", "{2C8A1CD6-7753-4B3E-BB37-C7D33CEDB4AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.Application", "SmartClinic.Application\SmartClinic.Application.csproj", "{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.MVC", "SmartClinic.MVC\SmartClinic.MVC.csproj", "{BF6A484C-FA81-482D-B594-A352498DF9B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.Infrastructure.CrossCutting", "SmartClinic.Infrastructure.CrossCutting\SmartClinic.Infrastructure.CrossCutting.csproj", "{6DF339C6-21BA-4498-807C-4F15EDFA8F1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.3 - IoC", "5.3 - IoC", "{0B7C6958-6870-4EB9-92EA-C0E7B6F617A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.Infrastructure.IoC", "SmartClinic.Infrastructure.IoC\SmartClinic.Infrastructure.IoC.csproj", "{C98E5FA2-2005-49C2-8818-1B4E46F40028}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99077CA3-2D9F-4C6E-B30E-4A3A2C6EF794}"
+	ProjectSection(SolutionItems) = preProject
+		RequisitosSmartClinic.doc = RequisitosSmartClinic.doc
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C0B9799-2532-4859-8424-8203A835A6EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0B9799-2532-4859-8424-8203A835A6EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C0B9799-2532-4859-8424-8203A835A6EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0B9799-2532-4859-8424-8203A835A6EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C8A1CD6-7753-4B3E-BB37-C7D33CEDB4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C8A1CD6-7753-4B3E-BB37-C7D33CEDB4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C8A1CD6-7753-4B3E-BB37-C7D33CEDB4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C8A1CD6-7753-4B3E-BB37-C7D33CEDB4AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF6A484C-FA81-482D-B594-A352498DF9B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6A484C-FA81-482D-B594-A352498DF9B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6A484C-FA81-482D-B594-A352498DF9B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6A484C-FA81-482D-B594-A352498DF9B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DF339C6-21BA-4498-807C-4F15EDFA8F1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DF339C6-21BA-4498-807C-4F15EDFA8F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DF339C6-21BA-4498-807C-4F15EDFA8F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DF339C6-21BA-4498-807C-4F15EDFA8F1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C98E5FA2-2005-49C2-8818-1B4E46F40028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98E5FA2-2005-49C2-8818-1B4E46F40028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98E5FA2-2005-49C2-8818-1B4E46F40028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98E5FA2-2005-49C2-8818-1B4E46F40028}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A806FB61-5A67-4BB5-BC2A-44A9FA2FCD1C} = {0FDAB687-0D98-4359-9622-4EBFC6AB3D47}
+		{432EA58A-30B2-47D1-A3A6-8DD6FE912AA8} = {0FDAB687-0D98-4359-9622-4EBFC6AB3D47}
+		{2C0B9799-2532-4859-8424-8203A835A6EE} = {E5369541-D44C-4D34-A315-3875015EDDF8}
+		{2C8A1CD6-7753-4B3E-BB37-C7D33CEDB4AD} = {A806FB61-5A67-4BB5-BC2A-44A9FA2FCD1C}
+		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF} = {6800B57F-C74F-47CD-B5B3-AFA74158E7E9}
+		{BF6A484C-FA81-482D-B594-A352498DF9B5} = {3FC0FF17-A8F6-4F1D-B70B-3F87823FE9C7}
+		{6DF339C6-21BA-4498-807C-4F15EDFA8F1E} = {432EA58A-30B2-47D1-A3A6-8DD6FE912AA8}
+		{0B7C6958-6870-4EB9-92EA-C0E7B6F617A2} = {0FDAB687-0D98-4359-9622-4EBFC6AB3D47}
+		{C98E5FA2-2005-49C2-8818-1B4E46F40028} = {0B7C6958-6870-4EB9-92EA-C0E7B6F617A2}
+	EndGlobalSection
+EndGlobal

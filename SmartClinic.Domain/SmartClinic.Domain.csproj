@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C0B9799-2532-4859-8424-8203A835A6EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartClinic.Domain</RootNamespace>
+    <AssemblyName>SmartClinic.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessServices\AppointmentService.cs" />
+    <Compile Include="BusinessServices\ClinicService.cs" />
+    <Compile Include="BusinessServices\CovenantService.cs" />
+    <Compile Include="BusinessServices\DoctorService.cs" />
+    <Compile Include="BusinessServices\MedicalRecordService.cs" />
+    <Compile Include="BusinessServices\PacientService.cs" />
+    <Compile Include="BusinessServices\SecretaryService.cs" />
+    <Compile Include="BusinessServices\UserService.cs" />
+    <Compile Include="Entities\Base\BaseEntity.cs" />
+    <Compile Include="Entities\Business\Appointment.cs" />
+    <Compile Include="Entities\Business\Clinic.cs" />
+    <Compile Include="Entities\Business\Covenant.cs" />
+    <Compile Include="Entities\Business\Doctor.cs" />
+    <Compile Include="Entities\Business\MedicalRecord.cs" />
+    <Compile Include="Entities\Business\Pacient.cs" />
+    <Compile Include="Entities\Business\Secretary.cs" />
+    <Compile Include="Entities\Business\User.cs" />
+    <Compile Include="Enums\Uf.cs" />
+    <Compile Include="Interfaces\Repositories\Base\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\Business\IAppointmentRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Business\IClinicRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Business\ICovenantRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Business\IDoctorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Business\IMedicalRecordRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Business\IPacientRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Business\ISecretaryRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Business\IUserRepository.cs" />
+    <Compile Include="Interfaces\BusinessServices\IAppointmentService.cs" />
+    <Compile Include="Interfaces\BusinessServices\IClinicService.cs" />
+    <Compile Include="Interfaces\BusinessServices\ICovenantService.cs" />
+    <Compile Include="Interfaces\BusinessServices\IDoctorService.cs" />
+    <Compile Include="Interfaces\BusinessServices\IMedicalRecordService.cs" />
+    <Compile Include="Interfaces\BusinessServices\IPacientService.cs" />
+    <Compile Include="Interfaces\BusinessServices\ISecretaryService.cs" />
+    <Compile Include="Interfaces\BusinessServices\IUserService.cs" />
+    <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enums\AppointmentType.cs" />
+    <Compile Include="ValueObjects\Cnpj.cs" />
+    <Compile Include="ValueObjects\Address.cs" />
+    <Compile Include="ValueObjects\Crm.cs" />
+    <Compile Include="ValueObjects\Phone.cs" />
+    <Compile Include="Enums\Sex.cs" />
+    <Compile Include="Enums\UserType.cs" />
+    <Compile Include="ValueObjects\Rg.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
