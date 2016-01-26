@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using SmartClinic.Application.ApplicationMapper;
 using SmartClinic.Infrastructure.CrossCutting.ContextInit;
-using SmartClinic.Application.AutoMapper;
 
 namespace SmartClinic.MVC
 {
@@ -16,7 +16,6 @@ namespace SmartClinic.MVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            AutoMapperConfig.RegisterMappings();
             ContextInit.Init();
 
             //var ioc = IoC.GetKernel();

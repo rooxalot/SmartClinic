@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using SmartClinic.Domain.Entities.Business;
 
 namespace SmartClinic.Application.ViewModels
 {
@@ -6,15 +8,30 @@ namespace SmartClinic.Application.ViewModels
     {
 
         #region Properties
+        [Required]
+        [StringLength(MedicalRecord.ComplementaryExamsMaxLength, ErrorMessage = "A quantidade de caracteres no campo Queixa não é valída")]
+        public string PrincipalComplaining { get; set; }
 
-        public string PrincipalComplaining { get; private set; }
-        public string MedicalHistory { get; private set; }
-        public string PossibleDiagnosis { get; private set; }
-        public string PrescriptedMedication { get; private set; }
-        public string Exams { get; private set; }
-        public string ComplementaryExams { get; private set; }
-        public Guid PacientId { get; private set; }
-        public virtual PacientViewModel Pacient { get; private set; }
+        [StringLength(MedicalRecord.MedicalHistoryMaxLength, ErrorMessage = "A quantidade de caracteres no campo Histórico Médico não é valida")]
+        public string MedicalHistory { get; set; }
+
+        [StringLength(MedicalRecord.PossibleDiagnosisMaxLength, ErrorMessage = "A quantidade de caracteres no campo Possível Diagnóstico não é valida")]
+        public string PossibleDiagnosis { get; set; }
+
+        [StringLength(MedicalRecord.PrescriptedMedicationMaxLength, ErrorMessage = "A quantidade de caracteres no campo Medicação Prescrita não é valida")]
+        public string PrescriptedMedication { get; set; }
+
+        [StringLength(MedicalRecord.ExamsMaxLength, ErrorMessage = "A quantidade de caracteres no campo Exames não é valida")]
+        public string Exams { get; set; }
+
+        [StringLength(MedicalRecord.PrescriptedMedicationMaxLength, ErrorMessage = "A quantidade de caracteres no campo Exames Complementares não é valida")]
+        public string ComplementaryExams { get; set; }
+
+        [ScaffoldColumn(false)]
+        public Guid PacientId { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual PacientViewModel Pacient { get; set; }
 
         #endregion
     }

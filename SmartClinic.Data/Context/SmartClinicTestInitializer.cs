@@ -23,14 +23,14 @@ namespace SmartClinic.Data.Context
             //Add Secretaries
             var secretary = new Secretary("Anna Rosa", new Rg(0987890675), new Phone(29894434),
                 new Address("Rua Padre Gabriel Campos", "Próx. ao Octacilio", "292", "Arthur Alvim", "São Paulo", Uf.SP),
-                Sex.Feminino);
+                Sex.Female);
             context.Secretaries.Add(secretary);
 
             //Add Doctor
-            var doctor1 = new Doctor("Carlos Luiz", new Rg(0989098975), new Crm("8904756457", Uf.SP), true, Sex.Masculino, 
+            var doctor1 = new Doctor("Carlos Luiz", new Rg(0989098975), new Crm("8904756457", Uf.SP), true, Sex.Male, 
                 new Address("Av Waldemar Tietz", "", "614", "Arthur Alvim", "São Paulo", Uf.SP));
 
-            var doctor2 = new Doctor("Sandra", new Rg(5678916530), new Crm("8904067454", Uf.SP), true, Sex.Feminino,
+            var doctor2 = new Doctor("Sandra", new Rg(5678916530), new Crm("8904067454", Uf.SP), true, Sex.Female,
                 new Address("Av Pablo Luiz", "Próximo ao Extra", "4566", "Arthur Alvim", "Rio de Janeiro", Uf.RJ));
 
             var doctors = new List<Doctor> {doctor1, doctor2};
@@ -50,11 +50,11 @@ namespace SmartClinic.Data.Context
             //Add Pacient
             var pacient1 = new Pacient("Rodrigo Martins",
                 new Address("Av Waldemar Tietz", "", "614", "Arthur Alvim", "São Paulo", Uf.SP),
-                new Phone(), new Rg(), Sex.Masculino, covenants.FirstOrDefault());
+                new Phone(), new Rg(), Sex.Male, covenants.FirstOrDefault());
 
             var pacient2 = new Pacient("Maria Inez",
                 new Address("Av Waldemar Tietz", "", "614", "Arthur Alvim", "São Paulo", Uf.SP),
-                new Phone(), new Rg(), Sex.Masculino, covenants[1]);
+                new Phone(), new Rg(), Sex.Male, covenants[1]);
 
             var pacients = new List<Pacient> {pacient1, pacient2};
             context.Pacients.AddRange(pacients);

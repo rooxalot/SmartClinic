@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 
-namespace SmartClinic.Application.AutoMapper
+namespace SmartClinic.Application.ApplicationMapper
 {
-    public class AutoMapperConfig
+    public static class AutoMapperConfig
     {
         public static void RegisterMappings()
         {
@@ -12,6 +12,7 @@ namespace SmartClinic.Application.AutoMapper
                 x.AddProfile<ViewModelToDomainMappingProfile>();
             });
         }
+
          
     }
 }

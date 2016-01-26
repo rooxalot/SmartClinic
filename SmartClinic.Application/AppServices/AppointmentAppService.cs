@@ -2,6 +2,8 @@
 using SmartClinic.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using AutoMapper;
+using SmartClinic.Application.ViewModels;
 using SmartClinic.Domain.Interfaces.BusinessServices;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
 using SmartClinic.Infrastructure.CrossCutting.Validations;
@@ -29,18 +31,9 @@ namespace SmartClinic.Application.AppServices
 
         #region Services
 
-        public Appointment CreateAppointmentWithoutPrice(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate,
-            AppointmentType type)
+        public AppointmentViewModel CreateAppointment(AppointmentViewModel viewModel)
         {
-            var appointment = CreateAppointmentWithPrice(doctor, pacient, covenant, appointmentDate, 0M, type);
-
-            return appointment;
-        }
-
-        public Appointment CreateAppointmentWithPrice(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate,
-            decimal price, AppointmentType type)
-        {
-            var appointment = new Appointment(doctor, pacient, covenant, appointmentDate, price, type);
+            var appointment = Mapper.Map<Appointment>(viewModel);
 
             using (_unitOfWork)
             {
@@ -48,12 +41,13 @@ namespace SmartClinic.Application.AppServices
                 _unitOfWork.Commit();
             }
 
-            return appointment;
+            return Mapper.Map<AppointmentViewModel>(appointment);
         }
 
-        public void AlterAppointment(Appointment appointment)
+        public void AlterAppointment(AppointmentViewModel viewModel)
         {
-            Assertions.AssertArgumentNotNull(appointment, "Não foi possível alterar a consulta. O parâmetro appointment não pode ser nulo");
+            Assertions.AssertArgumentNotNull(viewModel, "Não foi possível alterar a consulta. O parâmetro appointment não pode ser nulo");
+            var appointment = Mapper.Map<Appointment>(viewModel);
 
             using (_unitOfWork)
             {
@@ -74,19 +68,26 @@ namespace SmartClinic.Application.AppServices
             }
         }
 
-        public void TransferAppointment(Appointment appointment, Doctor doctor)
+        public void TransferAppointment(AppointmentViewModel appointmentViewModel, DoctorViewModel doctorViewModel)
         {
+            var appointment = Mapper.Map<Appointment>(appointmentViewModel);
+            var doctor = Mapper.Map<Doctor>(doctorViewModel);
+
             _appointmentService.TransferAppointment(appointment, doctor);
         }
 
-        public IEnumerable<Appointment> GetAppointmentsByDoctor(Doctor doctor)
+        public IEnumerable<Appointment> GetAppointmentsByDoctor(DoctorViewModel doctorViewModel)
         {
+            var doctor = Mapper.Map<Doctor>(doctorViewModel);
+
             return _appointmentService.GetAppointmentsByDoctor(doctor);
         }
 
-        public IEnumerable<Appointment> GetPendingAppointments()
+        public IEnumerable<AppointmentViewModel> GetPendingAppointments()
         {
-            return _appointmentService.GetPendingAppointments();
+            var appointments = _appointmentService.GetPendingAppointments();
+
+            return Mapper.Map<IEnumerable<AppointmentViewModel>>(appointments);
         }
 
 

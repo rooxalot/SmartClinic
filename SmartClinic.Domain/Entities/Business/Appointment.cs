@@ -66,9 +66,7 @@ namespace SmartClinic.Domain.Entities.Business
         public void SetDescription(string description)
         {
             if(description.Length > DescriptionMaxLength)
-                throw new InvalidOperationException(
-                    string.Format("A descrição deve possuir no máximo {0} caracteres", DescriptionMaxLength)
-                );
+                throw new InvalidOperationException(string.Format("A descrição deve possuir no máximo {0} caracteres", DescriptionMaxLength));
 
             Description = description;
         }

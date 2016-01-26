@@ -46,9 +46,9 @@
     <Compile Include="AppServices\PacientAppService.cs" />
     <Compile Include="AppServices\SecretaryAppService.cs" />
     <Compile Include="AppServices\UserAppService.cs" />
-    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
-    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
-    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="ApplicationMapper\AutoMapperConfig.cs" />
+    <Compile Include="ApplicationMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="ApplicationMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AppointmentViewModel.cs" />
     <Compile Include="ViewModels\ClinicViewModel.cs" />

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Enums;
 using SmartClinic.Domain.ValueObjects;
 
@@ -9,12 +11,22 @@ namespace SmartClinic.Application.ViewModels
 
         #region Properties
 
-        public string Name { get; private set; }
+        [Required]
+        [StringLength(Doctor.NameMaxLength, ErrorMessage = "A quantidade de caracteres no campo Nome não é valida")]
+        public string Name { get; set; }
+
         public Rg Rg { get; set; }
-        public Crm Crm { get; private set; }
-        public Address Address { get; private set; }
+
+        [Required]
+        public Crm Crm { get; set; }
+
+        public Address Address { get; set; }
+
+        [Required]
         public Sex Sex { get; set; }
-        public IEnumerable<AppointmentViewModel> Appointments { get; private set; }
+
+        [ScaffoldColumn(false)]
+        public IEnumerable<AppointmentViewModel> Appointments { get; set; }
 
         #endregion
     }

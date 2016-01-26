@@ -35,13 +35,6 @@ namespace SmartClinic.Data.EntityConfig
 
             Property(a => a.AppointmentPrice)
                 .IsRequired();
-
-            //Property(a => a.DoctorId)
-            //    .HasColumnName("DoctorId");
-
-            //Property(a => a.PacientId)
-            //    .HasColumnName("PacientId");
-
         }
     }
 }

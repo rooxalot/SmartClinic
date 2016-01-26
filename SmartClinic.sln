@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		RequisitosSmartClinic.doc = RequisitosSmartClinic.doc
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.API", "SmartClinic.API\SmartClinic.API.csproj", "{DD921C3F-2398-4A06-957E-4F56BC9080F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{C98E5FA2-2005-49C2-8818-1B4E46F40028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C98E5FA2-2005-49C2-8818-1B4E46F40028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C98E5FA2-2005-49C2-8818-1B4E46F40028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD921C3F-2398-4A06-957E-4F56BC9080F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD921C3F-2398-4A06-957E-4F56BC9080F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD921C3F-2398-4A06-957E-4F56BC9080F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD921C3F-2398-4A06-957E-4F56BC9080F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{6DF339C6-21BA-4498-807C-4F15EDFA8F1E} = {432EA58A-30B2-47D1-A3A6-8DD6FE912AA8}
 		{0B7C6958-6870-4EB9-92EA-C0E7B6F617A2} = {0FDAB687-0D98-4359-9622-4EBFC6AB3D47}
 		{C98E5FA2-2005-49C2-8818-1B4E46F40028} = {0B7C6958-6870-4EB9-92EA-C0E7B6F617A2}
+		{DD921C3F-2398-4A06-957E-4F56BC9080F7} = {85986DAD-40B7-424B-92A8-FF92FD59931D}
 	EndGlobalSection
 EndGlobal

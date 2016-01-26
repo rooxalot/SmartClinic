@@ -1,4 +1,6 @@
-﻿using SmartClinic.Domain.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using SmartClinic.Domain.Entities.Business;
+using SmartClinic.Domain.Enums;
 
 namespace SmartClinic.Application.ViewModels
 {
@@ -6,10 +8,18 @@ namespace SmartClinic.Application.ViewModels
     {
         #region Properties
 
-        public string Login { get; private set; }
-        public string Password { get; private set; }
+        [Required]
+        [StringLength(User.LoginMaxLength, MinimumLength = User.LoginMinLength, ErrorMessage = "A quantidade de caracteres no campo Login é invalída")]
+        public string Login { get; set; }
+
+        [Required]
+        [StringLength(User.PasswordMaxLength, MinimumLength = User.PasswordMinLength, ErrorMessage = "A quantidade de caracteres no campo Senha é invalída")]
+        public string Password { get; set; }
+
         public bool Active { get; set; }
-        public UserType UserType { get; private set; }
+
+        [Required]
+        public UserType UserType { get; set; }
 
         #endregion
 

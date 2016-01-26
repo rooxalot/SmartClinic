@@ -2,7 +2,7 @@
 using SmartClinic.Application.ViewModels;
 using SmartClinic.Domain.Entities.Business;
 
-namespace SmartClinic.Application.AutoMapper
+namespace SmartClinic.Application.ApplicationMapper
 {
     public class DomainToViewModelMappingProfile : Profile
     {

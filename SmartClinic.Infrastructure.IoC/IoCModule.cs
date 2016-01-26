@@ -1,14 +1,15 @@
 ﻿using Ninject.Modules;
+using SmartClinic.Application.AppServices;
+using SmartClinic.Data.Context;
 using SmartClinic.Data.Repositories.Base;
 using SmartClinic.Data.Repositories.Business;
 using SmartClinic.Data.UnitOfWork;
+using SmartClinic.Domain.BusinessServices;
+using SmartClinic.Domain.Interfaces.BusinessServices;
 using SmartClinic.Domain.Interfaces.Repositories.Base;
 using SmartClinic.Domain.Interfaces.Repositories.Business;
-using SmartClinic.Domain.Interfaces.BusinessServices;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
-using SmartClinic.Domain.BusinessServices;
 using System.Data.Entity;
-using SmartClinic.Data.Context;
 
 namespace SmartClinic.Infrastructure.IoC
 {
@@ -16,9 +17,6 @@ namespace SmartClinic.Infrastructure.IoC
     {
         public override void Load()
         {
-            //UnitOfWork
-            Bind<IUnitOfWork>().To<UnitOfWork>();
-
             //Contexts
             Bind<DbContext>().To<DbContext>();
             Bind<SmartClinicContext>().To<SmartClinicContext>();
@@ -34,7 +32,10 @@ namespace SmartClinic.Infrastructure.IoC
             Bind<ISecretaryRepository>().To<SecretaryRepository>();
             Bind<IUserRepository>().To<UserRepository>();
 
-            //Services
+            //UnitOfWork
+            Bind<IUnitOfWork>().To<UnitOfWork>();
+
+            //Business Services
             Bind<IAppointmentService>().To<AppointmentService>();
             Bind<IClinicService>().To<ClinicService>();
             Bind<ICovenantService>().To<CovenantService>();
@@ -43,6 +44,9 @@ namespace SmartClinic.Infrastructure.IoC
             Bind<IPacientService>().To<PacientService>();
             Bind<ISecretaryService>().To<SecretaryService>();
             Bind<IUserService>().To<UserService>();
+
+            //App Services
+            Bind<AppointmentAppService>().To<AppointmentAppService>();
         }
     }
 }

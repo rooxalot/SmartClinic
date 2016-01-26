@@ -78,10 +78,7 @@ namespace SmartClinic.Application.AppServices
         {
             using (_unitOfWork)
             {
-                return 
-                    _covenantService.GetAllActiveCovenants(
-                        _unitOfWork.CovenantRepository.GetAll()
-                    );
+                return  _covenantService.GetAllActiveCovenants(_unitOfWork.CovenantRepository.GetAll());
             }
         }
 

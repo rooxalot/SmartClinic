@@ -2,7 +2,7 @@
 {
     public enum Sex
     {
-        Masculino,
-        Feminino
+        Male,
+        Female
     }
 }
