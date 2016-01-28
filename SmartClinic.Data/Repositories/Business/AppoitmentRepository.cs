@@ -39,17 +39,18 @@ namespace SmartClinic.Data.Repositories.Business
 
         public IEnumerable<Appointment> GetPendingAppointments(int days = 0)
         {
-            using (SmartClinicContext)
-            {
-                if(days > 0)
-                    return SmartClinicContext.Appointments
-                    .Where(a => a.IsPending() && a.Date <= DateTime.Now.AddDays(days))
-                    .ToList();
+            IEnumerable<Appointment> appointments = null;
 
-                return SmartClinicContext.Appointments
-                    .Where(a => a.IsPending())
-                    .ToList();
-            }
+
+            using (SmartClinicContext)
+                appointments = SmartClinicContext.Appointments.ToList();
+
+            if (days > 0)
+                appointments = appointments.Where(a => a.IsPending() && a.Date <= DateTime.Now.AddDays(days));
+
+            appointments = appointments.Where(a => a.IsPending().Equals(true));
+
+            return appointments;
         }
     }
 }

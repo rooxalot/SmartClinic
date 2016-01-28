@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using AutoMapper;
+using SmartClinic.Application.ViewModels;
 using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Enums;
 using SmartClinic.Domain.Interfaces.BusinessServices;
@@ -29,6 +32,16 @@ namespace SmartClinic.Application.AppServices
         #endregion
 
         #region Services
+
+        public IEnumerable<DoctorViewModel> GetDoctors()
+        {
+            using (_unitOfWork)
+            {
+                var doctors = _unitOfWork.DoctorRepository.GetAll();
+
+                return Mapper.Map<IEnumerable<DoctorViewModel>>(doctors);
+            }
+        }
 
         public Doctor RegisterDoctor(string name, Rg rg, Crm crm, bool active, Sex sex, Address address)
         {

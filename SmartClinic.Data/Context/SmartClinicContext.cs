@@ -13,15 +13,14 @@ namespace SmartClinic.Data.Context
 {
     public class SmartClinicContext : DbContext
     {
-        private static readonly string StrConn =
-            ConfigurationManager.ConnectionStrings["SmartClinicConnection"].ConnectionString;
-
-        public SmartClinicContext() : base(StrConn)
+        public SmartClinicContext() : base("name=SmartClinicConnection")
         {
             Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
 
             //Initializer de testes, modificar futuramente.
-            Database.SetInitializer(new SmartClinicTestInitializer());
+            //Database.SetInitializer(new SmartClinicTestInitializer());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<SmartClinicContext>());
             Database.Initialize(false);
         }
 

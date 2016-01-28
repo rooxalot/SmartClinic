@@ -1,5 +1,4 @@
 ﻿using SmartClinic.Domain.Entities.Business;
-using SmartClinic.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
@@ -33,24 +32,49 @@ namespace SmartClinic.Application.AppServices
 
         public AppointmentViewModel CreateAppointment(AppointmentViewModel viewModel)
         {
-            var appointment = Mapper.Map<Appointment>(viewModel);
-
             using (_unitOfWork)
             {
+                //Obtem o paciente da consulta
+                var pacient = _unitOfWork.PacientRepository.Get(viewModel.PacientId);
+
+                //Obtem o médico da consulta
+                var doctor = _unitOfWork.DoctorRepository.Get(viewModel.DoctorId);
+
+                //Obtem o convêncio da consulta
+                var covenant = _unitOfWork.CovenantRepository.Get(viewModel.ConvenantId);
+
+                //Obtem a consulta a partir do DTO
+                var appointment = Mapper.Map<AppointmentViewModel, Appointment>(viewModel,
+                    new Appointment(doctor, pacient, covenant, viewModel.Date, viewModel.AppointmentPrice,
+                        viewModel.AppointmentType, viewModel.Description));
+
                 _unitOfWork.AppoitmentRepository.Add(appointment);
                 _unitOfWork.Commit();
             }
 
-            return Mapper.Map<AppointmentViewModel>(appointment);
+            return viewModel;
         }
 
         public void AlterAppointment(AppointmentViewModel viewModel)
         {
             Assertions.AssertArgumentNotNull(viewModel, "Não foi possível alterar a consulta. O parâmetro appointment não pode ser nulo");
-            var appointment = Mapper.Map<Appointment>(viewModel);
 
             using (_unitOfWork)
             {
+                //Obtem o paciente da consulta
+                var pacient = _unitOfWork.PacientRepository.Get(viewModel.PacientId);
+
+                //Obtem o médico da consulta
+                var doctor = _unitOfWork.DoctorRepository.Get(viewModel.DoctorId);
+
+                //Obtem o convêncio da consulta
+                var covenant = _unitOfWork.CovenantRepository.Get(viewModel.ConvenantId);
+
+                //Obtem a consulta a partir do DTO
+                var appointment = Mapper.Map<AppointmentViewModel, Appointment>(viewModel,
+                    new Appointment(doctor, pacient, covenant, viewModel.Date, viewModel.AppointmentPrice,
+                        viewModel.AppointmentType, viewModel.Description));
+
                 _unitOfWork.AppoitmentRepository.Update(appointment);
                 _unitOfWork.Commit();
             }
@@ -70,17 +94,38 @@ namespace SmartClinic.Application.AppServices
 
         public void TransferAppointment(AppointmentViewModel appointmentViewModel, DoctorViewModel doctorViewModel)
         {
-            var appointment = Mapper.Map<Appointment>(appointmentViewModel);
-            var doctor = Mapper.Map<Doctor>(doctorViewModel);
+            //Obtem o paciente da consulta
+            var pacient = _unitOfWork.PacientRepository.Get(appointmentViewModel.PacientId);
 
-            _appointmentService.TransferAppointment(appointment, doctor);
+            //Obtem o médico da consulta
+            var doctor = _unitOfWork.DoctorRepository.Get(appointmentViewModel.DoctorId);
+
+            //Obtem o convêncio da consulta
+            var covenant = _unitOfWork.CovenantRepository.Get(appointmentViewModel.ConvenantId);
+
+            //Obtem a consulta a partir do DTO
+            var appointmentEntity = Mapper.Map<AppointmentViewModel, Appointment>(appointmentViewModel,
+                new Appointment(doctor, pacient, covenant, appointmentViewModel.Date, appointmentViewModel.AppointmentPrice,
+                    appointmentViewModel.AppointmentType, appointmentViewModel.Description));
+
+            //Obtem o médico a partir do DTO
+            var doctorEntity = Mapper.Map<DoctorViewModel, Doctor>(doctorViewModel,
+                new Doctor(doctorViewModel.Name, doctorViewModel.Rg, doctorViewModel.Crm, doctorViewModel.Active, doctorViewModel.Sex,
+                    doctorViewModel.Address));
+
+            _appointmentService.TransferAppointment(appointmentEntity, doctorEntity);
         }
 
-        public IEnumerable<Appointment> GetAppointmentsByDoctor(DoctorViewModel doctorViewModel)
+        public IEnumerable<AppointmentViewModel> GetAppointmentsByDoctor(DoctorViewModel doctorViewModel)
         {
-            var doctor = Mapper.Map<Doctor>(doctorViewModel);
+            //Obtem o médico a partir do DTO
+            var doctor = Mapper.Map<DoctorViewModel, Doctor>(doctorViewModel,
+                new Doctor(doctorViewModel.Name, doctorViewModel.Rg, doctorViewModel.Crm, doctorViewModel.Active, doctorViewModel.Sex,
+                    doctorViewModel.Address));
 
-            return _appointmentService.GetAppointmentsByDoctor(doctor);
+            var appointments = _appointmentService.GetAppointmentsByDoctor(doctor);
+
+            return Mapper.Map<IEnumerable<AppointmentViewModel>>(appointments);
         }
 
         public IEnumerable<AppointmentViewModel> GetPendingAppointments()

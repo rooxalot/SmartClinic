@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Results;
 using SmartClinic.Application.AppServices;
+using SmartClinic.Application.ViewModels;
 
 namespace SmartClinic.API.Controllers
 {
@@ -15,18 +17,48 @@ namespace SmartClinic.API.Controllers
         }
 
         [HttpGet]
-        [Route("api/appointments")]
-        public IHttpActionResult GetPendingAppointments()
+        [Route("api/appointments/pending")]
+        public HttpResponseMessage GetPendingAppointments()
         {
             try
             {
                 var pendingAppointments = _appointmentAppService.GetPendingAppointments();
 
-                return Ok(pendingAppointments);
+                return Request.CreateResponse(HttpStatusCode.OK, pendingAppointments);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("api/appointments/doctor")]
+        public HttpResponseMessage GetAppointmentsByDoctor(DoctorViewModel model)
+        {
+            try
+            {
+                var appointments = _appointmentAppService.GetAppointmentsByDoctor(model);
+                return Request.CreateResponse(HttpStatusCode.OK, appointments);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("api/appointments/new")]
+        public HttpResponseMessage CreateAppointment(AppointmentViewModel model)
+        {
+            try
+            {
+                _appointmentAppService.CreateAppointment(model);
+                return Request.CreateResponse(HttpStatusCode.OK, model);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
     }

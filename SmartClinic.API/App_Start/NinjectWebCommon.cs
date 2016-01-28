@@ -1,4 +1,3 @@
-using System.Net.Mime;
 using System.Web.Http;
 using SmartClinic.Infrastructure.IoC;
 
@@ -52,8 +51,7 @@ namespace SmartClinic.API.App_Start
                 RegisterServices(kernel);
 
                 // Install our Ninject-based IDependencyResolver into the Web API config
-                GlobalConfiguration.Configuration.DependencyResolver =
-                    new API.App_Start.NinjectDependencyResolver(kernel);
+                GlobalConfiguration.Configuration.DependencyResolver = new API.App_Start.NinjectDependencyResolver(kernel);
 
 
                 return kernel;

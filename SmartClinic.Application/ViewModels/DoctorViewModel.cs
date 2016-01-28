@@ -20,6 +20,8 @@ namespace SmartClinic.Application.ViewModels
         [Required]
         public Crm Crm { get; set; }
 
+        public bool Active { get; set; }
+
         public Address Address { get; set; }
 
         [Required]

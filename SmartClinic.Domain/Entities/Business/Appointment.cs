@@ -31,7 +31,7 @@ namespace SmartClinic.Domain.Entities.Business
             AppointmentType = type;
         }
 
-        public Appointment(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate, decimal price, AppointmentType type)
+        public Appointment(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate, decimal price, AppointmentType type, string description = null)
         {
             if (!covenant.Equals(pacient.Covenant))
                 throw new InvalidOperationException("Não é possível criar a consulta devido o convenio do paciente não coincidir com o convenio da consulta");
@@ -42,6 +42,9 @@ namespace SmartClinic.Domain.Entities.Business
             SetAppointmentDate(appointmentDate);
             SetAppointmentPrice(price);
             AppointmentType = type;
+
+            if(!string.IsNullOrEmpty(description))
+                SetDescription(description);
         }
 
         #endregion
