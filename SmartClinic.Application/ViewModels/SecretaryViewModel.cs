@@ -2,6 +2,7 @@
 using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Enums;
 using SmartClinic.Domain.ValueObjects;
+using System;
 
 namespace SmartClinic.Application.ViewModels
 {
@@ -9,6 +10,9 @@ namespace SmartClinic.Application.ViewModels
     {
 
         #region Properties
+
+        [ScaffoldColumn(false)]
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(Secretary.NameMaxLength, ErrorMessage = "A quantidade de caracteres no campo Nome é invalida")]

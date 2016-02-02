@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Enums;
 using SmartClinic.Domain.ValueObjects;
+using System;
 
 namespace SmartClinic.Application.ViewModels
 {
@@ -10,6 +11,9 @@ namespace SmartClinic.Application.ViewModels
     {
 
         #region Properties
+
+        [ScaffoldColumn(false)]
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(Doctor.NameMaxLength, ErrorMessage = "A quantidade de caracteres no campo Nome não é valida")]

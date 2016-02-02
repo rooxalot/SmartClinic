@@ -10,6 +10,9 @@ namespace SmartClinic.Application.ViewModels
 
         #region Properties
 
+        [ScaffoldColumn(false)]
+        public Guid Id { get; set; } 
+
         [StringLength(Appointment.DescriptionMaxLength, ErrorMessage = "A descrição da consulta possuí mais caracteres que o permitido")]
         public string Description { get; set; }
 

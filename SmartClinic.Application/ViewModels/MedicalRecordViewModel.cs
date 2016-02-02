@@ -8,6 +8,10 @@ namespace SmartClinic.Application.ViewModels
     {
 
         #region Properties
+
+        [ScaffoldColumn(false)]
+        public Guid Id { get; set; }
+
         [Required]
         [StringLength(MedicalRecord.ComplementaryExamsMaxLength, ErrorMessage = "A quantidade de caracteres no campo Queixa não é valída")]
         public string PrincipalComplaining { get; set; }

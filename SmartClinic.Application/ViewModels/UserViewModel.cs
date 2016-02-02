@@ -1,12 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Enums;
+using System;
 
 namespace SmartClinic.Application.ViewModels
 {
     public class UserViewModel
     {
         #region Properties
+
+        [ScaffoldColumn(false)]
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(User.LoginMaxLength, MinimumLength = User.LoginMinLength, ErrorMessage = "A quantidade de caracteres no campo Login é invalída")]

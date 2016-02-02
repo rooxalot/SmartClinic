@@ -9,6 +9,10 @@ namespace SmartClinic.Application.ViewModels
     {
 
         #region Properties
+
+        [ScaffoldColumn(false)]
+        public Guid Id { get; set; }
+
         [StringLength(Covenant.NameMaxLength, MinimumLength = Covenant.NameMinLength, ErrorMessage = "A quantidade de caracteres no campo Nome não é valida")]
         public string Name { get; set; }
 

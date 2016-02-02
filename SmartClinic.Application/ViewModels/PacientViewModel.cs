@@ -10,6 +10,9 @@ namespace SmartClinic.Application.ViewModels
     {
         #region Properties
 
+        [ScaffoldColumn(false)]
+        public Guid Id { get; set; }
+
         [Required]
         [StringLength(Pacient.NameMaxLength, ErrorMessage = "A quantidade de caracteres no campo Nome é invalida")]
         public string Name { get; set; }
