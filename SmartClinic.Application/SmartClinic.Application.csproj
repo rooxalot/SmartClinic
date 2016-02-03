@@ -38,26 +38,13 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppServices\AppointmentAppService.cs" />
-    <Compile Include="AppServices\ClinicAppService.cs" />
-    <Compile Include="AppServices\CovenantAppService.cs" />
-    <Compile Include="AppServices\DoctorAppService.cs" />
-    <Compile Include="AppServices\MedicalRecordAppService.cs" />
-    <Compile Include="AppServices\PacientAppService.cs" />
-    <Compile Include="AppServices\SecretaryAppService.cs" />
     <Compile Include="AppServices\UserAppService.cs" />
     <Compile Include="ApplicationMapper\AutoMapperConfig.cs" />
     <Compile Include="ApplicationMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="ApplicationMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\AppointmentViewModel.cs" />
-    <Compile Include="ViewModels\ClinicViewModel.cs" />
-    <Compile Include="ViewModels\CovenantViewModel.cs" />
-    <Compile Include="ViewModels\DoctorViewModel.cs" />
-    <Compile Include="ViewModels\MedicalRecordViewModel.cs" />
-    <Compile Include="ViewModels\PacientViewModel.cs" />
-    <Compile Include="ViewModels\SecretaryViewModel.cs" />
-    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\UserModels\AuthenticateUserViewModel.cs" />
+    <Compile Include="ViewModels\UserModels\RegisterUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartClinic.Domain\SmartClinic.Domain.csproj">
@@ -72,6 +59,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

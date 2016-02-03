@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SmartClinic.Application.ViewModels;
+using SmartClinic.Application.ViewModels.UserModels;
 using SmartClinic.Domain.Entities.Business;
 
 namespace SmartClinic.Application.ApplicationMapper
@@ -8,14 +8,9 @@ namespace SmartClinic.Application.ApplicationMapper
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<AppointmentViewModel, Appointment>();
-            Mapper.CreateMap<ClinicViewModel, Clinic>();
-            Mapper.CreateMap<CovenantViewModel, Covenant>();
-            Mapper.CreateMap<DoctorViewModel, Doctor>();
-            Mapper.CreateMap<MedicalRecordViewModel, MedicalRecord>();
-            Mapper.CreateMap<PacientViewModel, Pacient>();
-            Mapper.CreateMap<SecretaryViewModel, Secretary>();
-            Mapper.CreateMap<UserViewModel, User>();
+            //User
+            Mapper.CreateMap<RegisterUserViewModel, User>();
+
         }
     }
 }

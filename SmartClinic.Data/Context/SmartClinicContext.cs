@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
@@ -19,8 +18,7 @@ namespace SmartClinic.Data.Context
             Configuration.ProxyCreationEnabled = false;
 
             //Initializer de testes, modificar futuramente.
-            //Database.SetInitializer(new SmartClinicTestInitializer());
-            Database.SetInitializer(new CreateDatabaseIfNotExists<SmartClinicContext>());
+            Database.SetInitializer(new SmartClinicTestInitializer());
             Database.Initialize(false);
         }
 

@@ -8,12 +8,12 @@ using SmartClinic.Domain.ValueObjects;
 
 namespace SmartClinic.Data.Context
 {
-    public class SmartClinicTestInitializer : DropCreateDatabaseAlways<SmartClinicContext>
+    public class SmartClinicTestInitializer : CreateDatabaseIfNotExists<SmartClinicContext>
     {
         protected override void Seed(SmartClinicContext context)
         {
             //Add user
-            var user = new User("admin", "power123", true, UserType.Administrator);
+            var user = new User("admin", "2588b80963ee311e3656893546db673d", true, UserType.Administrator);
             context.Users.Add(user);
 
             //Add Clinic

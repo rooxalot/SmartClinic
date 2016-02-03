@@ -1,15 +1,16 @@
-﻿using SmartClinic.Domain.Entities.Business;
-using SmartClinic.Domain.Enums;
+﻿using AutoMapper;
+using SmartClinic.Application.ViewModels.UserModels;
+using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
 using SmartClinic.Infrastructure.CrossCutting.Security;
 using SmartClinic.Infrastructure.CrossCutting.Validations;
-using System;
+using System.Collections.Generic;
+
 
 namespace SmartClinic.Application.AppServices
 {
     public class UserAppService
     {
-
         #region Properties
 
         private readonly IUnitOfWork _unitOfWork;
@@ -27,65 +28,46 @@ namespace SmartClinic.Application.AppServices
 
         #region Services
 
-        public User RegisterUser(string login, string password, bool active, UserType type)
+        public IEnumerable<User> GetUsers()
         {
-            Assertions.AssertArgumentNotNull(login, "Login do usuário é obrigatório");
-            Assertions.AssertArgumentNotEmpty(login, "Login do usuário é obrigatório");
-
-            Assertions.AssertArgumentNotNull(password, "Senha do usuário é obrigatório");
-            Assertions.AssertArgumentNotEmpty(password, "Senha do usuário é obrigatório");
-
-            var encryptedPassword = Encrypter.Encrypt(password);
-
-            var user = new User(login, encryptedPassword, active, type);
-
+            IEnumerable<User> users = null;
             using (_unitOfWork)
             {
-                _unitOfWork.UserRepository.Add(user);
-                _unitOfWork.Commit();
+                users = _unitOfWork.UserRepository.GetAll();
             }
 
-            return user;
+            return users;
         }
 
-        public void AlterUser(User user)
+        public bool AuthenticateUser(AuthenticateUserViewModel viewModel)
         {
-            Assertions.AssertArgumentNotNull(user, "Não é possível alterar o usuário. O parâmetro informado não pode ser nulo");
-
+            var encryptedPassword = Encrypter.Encrypt(viewModel.Password);
             using (_unitOfWork)
             {
-                _unitOfWork.UserRepository.Update(user);
-                _unitOfWork.Commit();
+                var userAuthenticated = _unitOfWork.UserRepository.GetValidUser(viewModel.Login, encryptedPassword);
+
+                if (userAuthenticated != null)
+                    return true;
+
+                return false;
             }
         }
 
-        public void RemoveUser(Guid id)
+        public RegisterUserViewModel RegisterUser (RegisterUserViewModel viewModel)
         {
-            var user = _unitOfWork.UserRepository.Get(id);
-            Assertions.AssertArgumentNotNull(user, "Não é possível remover o usuário. O parâmetro informado não pode ser nulo");
-
-            using (_unitOfWork)
+            var isValid = ViewModelValidator.Validate(viewModel);
+            if (isValid)
             {
-                _unitOfWork.UserRepository.Remove(user);
-                _unitOfWork.Commit();
+                using (_unitOfWork)
+                {
+                    var user = Mapper.Map<User>(viewModel);
+                    _unitOfWork.UserRepository.SaveOrAdd(user);
+                }
+
+                return viewModel;
             }
-        }
 
-        public User AuthenticateUser(string login, string password)
-        {
-            Assertions.AssertArgumentNotNull(login, "Login obrigatório");
-            Assertions.AssertArgumentNotEmpty(login, "Login obrigatório");
-
-            Assertions.AssertArgumentNotNull(password, "Senha obrigatória");
-            Assertions.AssertArgumentNotEmpty(password, "Senha obrigatória");
-
-            var encryptedPassword = Encrypter.Encrypt(password);
-
-            using (_unitOfWork)
-            {
-                var user = _unitOfWork.UserRepository.GetValidUser(login, encryptedPassword);
-                return user;
-            }
+            return null;
         }
 
         #endregion
