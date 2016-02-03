@@ -260,6 +260,10 @@
       <Project>{e566eea2-c644-46b2-bcc8-eb1c366f33cf}</Project>
       <Name>SmartClinic.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmartClinic.Infrastructure.CrossCutting\SmartClinic.Infrastructure.CrossCutting.csproj">
+      <Project>{6df339c6-21ba-4498-807c-4f15edfa8f1e}</Project>
+      <Name>SmartClinic.Infrastructure.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmartClinic.Infrastructure.IoC\SmartClinic.Infrastructure.IoC.csproj">
       <Project>{c98e5fa2-2005-49c2-8818-1b4e46f40028}</Project>
       <Name>SmartClinic.Infrastructure.IoC</Name>

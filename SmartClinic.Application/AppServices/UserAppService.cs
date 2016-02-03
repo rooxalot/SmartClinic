@@ -4,7 +4,9 @@ using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
 using SmartClinic.Infrastructure.CrossCutting.Security;
 using SmartClinic.Infrastructure.CrossCutting.Validations;
+using System;
 using System.Collections.Generic;
+using System.Text;
 
 
 namespace SmartClinic.Application.AppServices
@@ -28,17 +30,6 @@ namespace SmartClinic.Application.AppServices
 
         #region Services
 
-        public IEnumerable<User> GetUsers()
-        {
-            IEnumerable<User> users = null;
-            using (_unitOfWork)
-            {
-                users = _unitOfWork.UserRepository.GetAll();
-            }
-
-            return users;
-        }
-
         public bool AuthenticateUser(AuthenticateUserViewModel viewModel)
         {
             var encryptedPassword = Encrypter.Encrypt(viewModel.Password);
@@ -55,19 +46,30 @@ namespace SmartClinic.Application.AppServices
 
         public RegisterUserViewModel RegisterUser (RegisterUserViewModel viewModel)
         {
-            var isValid = ViewModelValidator.Validate(viewModel);
-            if (isValid)
+            var errors = ViewModelValidator.Validate(viewModel);
+            if (errors == null || errors.Count <= 0)
             {
                 using (_unitOfWork)
                 {
+                    viewModel.Password = Encrypter.Encrypt(viewModel.Password);
                     var user = Mapper.Map<User>(viewModel);
+
                     _unitOfWork.UserRepository.SaveOrAdd(user);
+                    _unitOfWork.Commit();
                 }
 
                 return viewModel;
             }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    sb.AppendLine(error.ToString());
+                }
 
-            return null;
+                throw new Exception(sb.ToString());
+            }
         }
 
         #endregion

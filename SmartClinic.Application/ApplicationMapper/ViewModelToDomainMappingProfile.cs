@@ -8,8 +8,13 @@ namespace SmartClinic.Application.ApplicationMapper
     {
         protected override void Configure()
         {
-            //User
-            Mapper.CreateMap<RegisterUserViewModel, User>();
+            #region UserMappings
+
+            //RegisterUser
+            Mapper.CreateMap<RegisterUserViewModel, User>()
+                .ConstructUsing(x => new User(x.Login, x.Password, x.Active, x.UserType));
+
+            #endregion
 
         }
     }

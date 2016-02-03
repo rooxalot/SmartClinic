@@ -9,14 +9,14 @@ namespace SmartClinic.Infrastructure.CrossCutting.Validations
 {
     public class ViewModelValidator
     {
-        public static bool Validate(object viewModel)
+        public static List<ValidationResult> Validate(object viewModel)
         {
-            var validationContext =  new ValidationContext(viewModel);
             var validationResults = new List<ValidationResult>();
+            var validationContext =  new ValidationContext(viewModel, null, null);
 
-            var isValid = Validator.TryValidateObject(viewModel, validationContext, validationResults);
+            var isValid = Validator.TryValidateObject(viewModel, validationContext, validationResults, true);
 
-            return isValid;
+            return validationResults;
         }
     }
 }

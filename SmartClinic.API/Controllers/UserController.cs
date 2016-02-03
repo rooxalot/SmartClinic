@@ -31,6 +31,7 @@ namespace SmartClinic.API.Controllers
         }
 
         [HttpPost]
+        [Route("api/user/register")]
         public HttpResponseMessage Register(RegisterUserViewModel viewModel) 
         {
             try
@@ -39,7 +40,7 @@ namespace SmartClinic.API.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException);
             }
         }
     }
