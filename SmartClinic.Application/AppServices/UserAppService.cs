@@ -6,6 +6,7 @@ using SmartClinic.Infrastructure.CrossCutting.Security;
 using SmartClinic.Infrastructure.CrossCutting.Validations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 
@@ -32,22 +33,37 @@ namespace SmartClinic.Application.AppServices
 
         public bool AuthenticateUser(AuthenticateUserViewModel viewModel)
         {
-            var encryptedPassword = Encrypter.Encrypt(viewModel.Password);
-            using (_unitOfWork)
+            IEnumerable<ValidationResult> errors;
+            var isValid = ViewModelValidator.Validate(viewModel, out errors);
+
+            if (isValid)
             {
-                var userAuthenticated = _unitOfWork.UserRepository.GetValidUser(viewModel.Login, encryptedPassword);
+                viewModel.Password = Encrypter.Encrypt(viewModel.Password);
+                using (_unitOfWork)
+                {
+                    var userAuthenticated = _unitOfWork.UserRepository.GetValidUser(viewModel.Login, viewModel.Password);
 
-                if (userAuthenticated != null)
-                    return true;
+                    return userAuthenticated != null;
+                }
+            }
+            else
+            {
+                var sb = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    sb.AppendLine(error.ToString());
+                }
 
-                return false;
+                throw new Exception(sb.ToString());
             }
         }
 
-        public RegisterUserViewModel RegisterUser (RegisterUserViewModel viewModel)
+        public RegisterUserViewModel RegisterUser(RegisterUserViewModel viewModel)
         {
-            var errors = ViewModelValidator.Validate(viewModel);
-            if (errors == null || errors.Count <= 0)
+            IEnumerable<ValidationResult> errors;
+            var isValid = ViewModelValidator.Validate(viewModel, out errors);
+
+            if (isValid)
             {
                 using (_unitOfWork)
                 {
@@ -62,7 +78,7 @@ namespace SmartClinic.Application.AppServices
             }
             else
             {
-                StringBuilder sb = new StringBuilder();
+                var sb = new StringBuilder();
                 foreach (var error in errors)
                 {
                     sb.AppendLine(error.ToString());

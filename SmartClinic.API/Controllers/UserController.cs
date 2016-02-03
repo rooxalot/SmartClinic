@@ -40,7 +40,7 @@ namespace SmartClinic.API.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, (ex.Message + ": " + ex.InnerException));
             }
         }
     }

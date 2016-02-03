@@ -1,22 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SmartClinic.Infrastructure.CrossCutting.Validations
 {
     public class ViewModelValidator
     {
-        public static List<ValidationResult> Validate(object viewModel)
+
+        /// <summary>
+        /// Valida se o ViewModel está valido
+        /// </summary>
+        /// <param name="viewModel">ViewModel a veificado.</param>
+        /// <returns>Retorna um booleano informando se o objeto está valido ou não.</returns>
+        public static bool Validate(object viewModel)
         {
             var validationResults = new List<ValidationResult>();
-            var validationContext =  new ValidationContext(viewModel, null, null);
+            var validationContext = new ValidationContext(viewModel, null, null);
 
             var isValid = Validator.TryValidateObject(viewModel, validationContext, validationResults, true);
 
-            return validationResults;
+            return isValid;
+        }
+
+
+        /// <summary>
+        /// Valida se o ViewModel está valido
+        /// </summary>
+        /// <param name="viewModel">ViewModel a veificado.</param>
+        /// <param name="results">Parâmetro de saída para que seja possível analisar os resultados de validação do ViewModel</param>
+        /// <returns>Retorna um booleano informando se o objeto está valido ou não.</returns>
+        public static bool Validate(object viewModel, out IEnumerable<ValidationResult> results)
+        {
+            var validationResults = new List<ValidationResult>();
+            var validationContext = new ValidationContext(viewModel, null, null);
+
+            var isValid = Validator.TryValidateObject(viewModel, validationContext, validationResults, true);
+
+            results = validationResults;
+            return isValid;
         }
     }
 }
