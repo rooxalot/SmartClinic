@@ -38,11 +38,14 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppServices\DoctorAppService.cs" />
     <Compile Include="AppServices\UserAppService.cs" />
     <Compile Include="ApplicationMapper\AutoMapperConfig.cs" />
     <Compile Include="ApplicationMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="ApplicationMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AddressViewModels\AddressViewModel.cs" />
+    <Compile Include="ViewModels\DoctorModels\RegisterDoctorViewModel.cs" />
     <Compile Include="ViewModels\UserModels\AuthenticateUserViewModel.cs" />
     <Compile Include="ViewModels\UserModels\RegisterUserViewModel.cs" />
   </ItemGroup>

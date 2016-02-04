@@ -47,6 +47,8 @@ namespace SmartClinic.Infrastructure.IoC
 
             //App Services
             Bind<UserAppService>().To<UserAppService>();
+            Bind<DoctorAppService>().To<DoctorAppService>();
+            
         }
     }
 }
