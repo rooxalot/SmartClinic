@@ -10,12 +10,22 @@ namespace SmartClinic.Data.Repositories.Business
 {
     public class AppoitmentRepository : RepositoryBase<Appointment>, IAppointmentRepository
     {
-        public AppoitmentRepository(SmartClinicContext context) 
+        #region Constructor
+
+        public AppoitmentRepository(SmartClinicContext context)
             : base(context)
         {
         }
 
+        #endregion
+        
+        #region Context
+
         public SmartClinicContext SmartClinicContext => Context as SmartClinicContext;
+
+        #endregion
+
+        #region Methods
 
         public IEnumerable<Appointment> GetAppointmentsByDoctor(Doctor doctor)
         {
@@ -52,5 +62,7 @@ namespace SmartClinic.Data.Repositories.Business
 
             return appointments;
         }
+
+        #endregion
     }
 }

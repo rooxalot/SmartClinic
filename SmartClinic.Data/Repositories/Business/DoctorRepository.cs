@@ -18,16 +18,5 @@ namespace SmartClinic.Data.Repositories.Business
 
         public SmartClinicContext SmartClinicContext => Context as SmartClinicContext;
 
-        public bool HasCrmRegistered(Crm crm)
-        {
-            using (SmartClinicContext)
-            {
-                var doctorCrmRegistered = SmartClinicContext
-                    .Doctors
-                    .FirstOrDefault(d => d.Crm.Code == crm.Code && d.Crm.Uf == crm.Uf);
-
-                return doctorCrmRegistered != null;
-            }
-        }
     }
 }

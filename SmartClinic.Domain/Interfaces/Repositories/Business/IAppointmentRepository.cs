@@ -9,7 +9,6 @@ namespace SmartClinic.Domain.Interfaces.Repositories.Business
     {
         IEnumerable<Appointment> GetAppointmentsByDoctor(Doctor doctor);
         IEnumerable<Appointment> GetPendingAppointments(int days = 0);
-
         IEnumerable<Appointment> GetAppointmentsWithinDateRange(DateTime start, DateTime end);
     }
 }

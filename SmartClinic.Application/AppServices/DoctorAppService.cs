@@ -36,7 +36,9 @@ namespace SmartClinic.Application.AppServices
         //teste
         public List<RegisterDoctorViewModel> GetModels()
         {
-            return Mapper.Map<List<RegisterDoctorViewModel>>(_unitOfWork.DoctorRepository.GetAll());
+            List<RegisterDoctorViewModel> models = Mapper.Map<List<RegisterDoctorViewModel>>(_unitOfWork.DoctorRepository.GetAll());
+
+            return models;
         }
 
         public RegisterDoctorViewModel RegisterDoctor(RegisterDoctorViewModel viewModel)

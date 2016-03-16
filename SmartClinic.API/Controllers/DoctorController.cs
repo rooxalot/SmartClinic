@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -32,7 +30,6 @@ namespace SmartClinic.API.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, (ex.Message + ": " + ex.InnerException));
             }
         }
-
 
         [HttpPost]
         [Route("api/doctor/register")]
