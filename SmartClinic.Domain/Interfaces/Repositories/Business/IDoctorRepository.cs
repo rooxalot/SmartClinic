@@ -7,6 +7,6 @@ namespace SmartClinic.Domain.Interfaces.Repositories.Business
 {
     public interface IDoctorRepository : IRepositoryBase<Doctor>
     {
-        bool HasCrmRegistered(Crm crm);
+       
     }
 }

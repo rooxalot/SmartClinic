@@ -29,7 +29,7 @@ namespace SmartClinic.Domain.Entities.Business
         public string Login { get; private set; }
         public string Password { get; private set; }
         public bool Active { get; set; }
-        public UserType UserType { get; private set; }
+        public UserType UserType { get; set; }
 
         #endregion
 
@@ -65,6 +65,14 @@ namespace SmartClinic.Domain.Entities.Business
                 throw new InvalidOperationException(string.Format("O Login deve possuir entre {0} a {1} caracteres", LoginMinLength, LoginMaxLength));
 
             Login = login;
+        }
+
+        public void ChangePassword(string currentPassword, string newPassword)
+        {
+            if (currentPassword != Password)
+                throw new Exception("A senha informada não coincide com a senha do usuário");
+
+            SetPassword(newPassword);
         }
 
         #endregion

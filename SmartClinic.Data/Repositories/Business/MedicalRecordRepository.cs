@@ -16,10 +16,6 @@ namespace SmartClinic.Data.Repositories.Business
 
         public SmartClinicContext SmartClinicContext => Context as SmartClinicContext;
 
-        public MedicalRecord GetPacientMedicalRecord(Pacient pacient, Guid medicaRecordId)
-        {
-            return SmartClinicContext.MedicalRecords
-                .FirstOrDefault(mr => mr.PacientId == pacient.Id && mr.Id == medicaRecordId);
-        }
+     
     }
 }

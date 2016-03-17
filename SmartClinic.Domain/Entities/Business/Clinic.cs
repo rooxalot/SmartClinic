@@ -67,18 +67,12 @@ namespace SmartClinic.Domain.Entities.Business
 
         public void SetCnpj(Cnpj cnpj)
         {
-            if (cnpj == null)
-                Cnpj = new Cnpj();
-            else
-                Cnpj = cnpj;
+            Cnpj = cnpj ?? new Cnpj();
         }
 
         public void SetPhone(Phone phone)
         {
-            if (phone == null)
-                Phone = new Phone();
-            else
-                Phone = phone;
+            Phone = phone ?? new Phone();
         }
 
         #endregion

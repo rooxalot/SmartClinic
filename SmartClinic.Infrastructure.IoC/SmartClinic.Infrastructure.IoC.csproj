@@ -53,7 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IoC.cs" />
     <Compile Include="IoCModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,10 +61,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SmartClinic.Application\SmartClinic.Application.csproj">
-      <Project>{e566eea2-c644-46b2-bcc8-eb1c366f33cf}</Project>
-      <Name>SmartClinic.Application</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SmartClinic.Data\SmartClinic.Infrastructure.Data.csproj">
       <Project>{2c8a1cd6-7753-4b3e-bb37-c7d33cedb4ad}</Project>
       <Name>SmartClinic.Infrastructure.Data</Name>

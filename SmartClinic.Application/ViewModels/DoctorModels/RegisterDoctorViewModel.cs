@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Enums;
 using SmartClinic.Domain.ValueObjects;
@@ -7,6 +8,9 @@ namespace SmartClinic.Application.ViewModels.DoctorModels
 {
     public class RegisterDoctorViewModel
     {
+
+        public Guid Id { get; set; }
+
         [Required]
         [StringLength(Doctor.NameMaxLength, ErrorMessage = "A quantidade de caracteres para o campo Nomde foi ultrapassada")]
         public string Name { get; set; }
