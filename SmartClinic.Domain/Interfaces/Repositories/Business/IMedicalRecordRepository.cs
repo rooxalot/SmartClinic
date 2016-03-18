@@ -6,5 +6,6 @@ namespace SmartClinic.Domain.Interfaces.Repositories.Business
 {
     public interface IMedicalRecordRepository : IRepositoryBase<MedicalRecord>
     {
+        
     }
 }

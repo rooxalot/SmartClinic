@@ -47,6 +47,7 @@
     <Compile Include="ViewModels\AddressViewModels\AddressViewModel.cs" />
     <Compile Include="ViewModels\DoctorModels\RegisterDoctorViewModel.cs" />
     <Compile Include="ViewModels\UserModels\AuthenticateUserViewModel.cs" />
+    <Compile Include="ViewModels\UserModels\ChangeUserInformationViewModel.cs" />
     <Compile Include="ViewModels\UserModels\RegisterUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

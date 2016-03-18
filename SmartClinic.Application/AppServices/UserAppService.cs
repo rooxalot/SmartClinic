@@ -88,6 +88,51 @@ namespace SmartClinic.Application.AppServices
             }
         }
 
+        public void RemoveUser(Guid id)
+        {
+            using (_unitOfWork)
+            {
+                var user = _unitOfWork.UserRepository.Get(id);
+
+                if (user == null)
+                    throw new Exception("Não foi encontrado nenhum usuário com o ID especificado.");
+
+                _unitOfWork.UserRepository.Remove(user);
+                _unitOfWork.Commit();
+            }
+        }
+
+        public void UpdateUser(ChangeUserInformationViewModel viewModel)
+        {
+            IEnumerable<ValidationResult> errors;
+            var isValid = ViewModelValidator.Validate(viewModel, out errors);
+
+            if (isValid)
+            {
+                using (_unitOfWork)
+                {
+                    var user = _unitOfWork.UserRepository.Get(viewModel.Id);
+                    if (user == null)
+                        throw new Exception("Não foi encontrado nenhum usuário com o ID informado.");
+
+                    user.ChangePassword(viewModel.Password, viewModel.NewPassword);
+                    user.SetLogin(viewModel.Login);
+                    user.Active = viewModel.Active;
+                    user.UserType = viewModel.UserType;
+                }
+            }
+            else
+            {
+                var sb = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    sb.AppendLine(error.ToString());
+                }
+
+                throw new Exception(sb.ToString());
+            }
+        }
+
         #endregion
     }
 }

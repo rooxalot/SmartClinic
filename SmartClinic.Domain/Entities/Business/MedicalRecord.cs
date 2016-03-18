@@ -74,7 +74,7 @@ namespace SmartClinic.Domain.Entities.Business
         public void SetPacient(Pacient pacient)
         {
             if(pacient == null)
-                throw new ArgumentNullException("pacient");
+                throw new InvalidOperationException("Ficha médica não pode possuir um paciente nulo");
 
             Pacient = pacient;
         }

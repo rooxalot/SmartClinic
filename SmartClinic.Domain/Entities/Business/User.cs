@@ -29,7 +29,7 @@ namespace SmartClinic.Domain.Entities.Business
         public string Login { get; private set; }
         public string Password { get; private set; }
         public bool Active { get; set; }
-        public UserType UserType { get; private set; }
+        public UserType UserType { get; set; }
 
         #endregion
 

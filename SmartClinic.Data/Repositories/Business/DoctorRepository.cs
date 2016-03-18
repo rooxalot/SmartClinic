@@ -17,6 +17,5 @@ namespace SmartClinic.Data.Repositories.Business
         }
 
         public SmartClinicContext SmartClinicContext => Context as SmartClinicContext;
-
     }
 }

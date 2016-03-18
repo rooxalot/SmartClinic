@@ -13,6 +13,7 @@ namespace SmartClinic.Domain.Interfaces.UnitOfWork
         IPacientRepository PacientRepository { get; }
         ISecretaryRepository SecretaryRepository { get; }
         IUserRepository UserRepository { get; }
+
         void Commit();
         void Rollback();
     }

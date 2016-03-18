@@ -43,5 +43,38 @@ namespace SmartClinic.API.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, (ex.Message + ": " + ex.InnerException));
             }
         }
+
+        [HttpDelete]
+        [Route("api/user/remove/{id}")]
+        public HttpResponseMessage Remove(Guid id)
+        {
+            try
+            {
+                _appService.RemoveUser(id);
+
+                return Request.CreateResponse(HttpStatusCode.OK, true);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, (ex.Message + ": " + ex.InnerException));
+            }
+
+        }
+
+        [HttpPut]
+        [Route("api/user/update/{id}")]
+        public HttpResponseMessage Update(Guid id, [FromBody] ChangeUserInformationViewModel viewModel)
+        {
+            try
+            {
+                viewModel.Id = id;
+                _appService.UpdateUser(viewModel);
+                return Request.CreateResponse(HttpStatusCode.OK, viewModel);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, (ex.Message + ": " + ex.InnerException));
+            }
+        }
     }
 }
