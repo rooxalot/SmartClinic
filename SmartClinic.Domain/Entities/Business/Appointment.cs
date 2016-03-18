@@ -21,9 +21,6 @@ namespace SmartClinic.Domain.Entities.Business
 
         public Appointment(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate, AppointmentType type)
         {
-            if(!covenant.Equals(pacient.Covenant))
-                throw new InvalidOperationException("Não é possível criar a consulta devido o convenio do paciente não coincidir com o convenio da consulta");
-
             SetDoctor(doctor);
             SetPacient(pacient);
             SetCovenant(covenant);
@@ -31,11 +28,9 @@ namespace SmartClinic.Domain.Entities.Business
             AppointmentType = type;
         }
 
-        public Appointment(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate, decimal price, AppointmentType type, string description = null)
+        public Appointment(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate, decimal? price, 
+            AppointmentType type, string description = null)
         {
-            if (!covenant.Equals(pacient.Covenant))
-                throw new InvalidOperationException("Não é possível criar a consulta devido o convenio do paciente não coincidir com o convenio da consulta");
-
             SetDoctor(doctor);
             SetPacient(pacient);
             SetCovenant(covenant);
@@ -53,7 +48,7 @@ namespace SmartClinic.Domain.Entities.Business
 
         public string Description { get; private set; }
         public DateTime Date { get; private set; }
-        public decimal AppointmentPrice { get; private set; }
+        public decimal? AppointmentPrice { get; private set; }
         public AppointmentType AppointmentType { get; set; }
         public Guid DoctorId { get; private set; }
         public virtual Doctor Doctor { get; private set; }
@@ -98,12 +93,12 @@ namespace SmartClinic.Domain.Entities.Business
             Covenant = covenant;
         }
 
-        public void SetAppointmentPrice(decimal price)
+        public void SetAppointmentPrice(decimal? price)
         {
             if (price < 0)
                 throw new InvalidOperationException("Não é possível associar um valor negativo ao preço da consulta");
 
-            AppointmentPrice = price;
+            AppointmentPrice = price ?? 0;
         }
 
         public void SetAppointmentDate(DateTime date)
