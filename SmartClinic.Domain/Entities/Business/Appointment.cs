@@ -77,10 +77,7 @@ namespace SmartClinic.Domain.Entities.Business
         public void SetDoctor(Doctor doctor)
         {
             if(doctor == null)
-                throw new ArgumentNullException("doctor");
-
-            if(!doctor.Active)
-                throw new InvalidOperationException("O médico associado a consulta não está ativo");
+                throw new InvalidOperationException("Não é possível associar o médico a consulta. Médico está nulo");
 
             Doctor = doctor;
         }
@@ -96,10 +93,7 @@ namespace SmartClinic.Domain.Entities.Business
         public void SetCovenant(Covenant covenant)
         {
             if(covenant == null)
-                throw new ArgumentNullException("covenant");
-            
-            if(!covenant.IsActive())
-                throw new InvalidOperationException("O convenio associado a consulta não está nas condições validas");
+                throw new InvalidOperationException("Não é possível associar o convenio a consulta. Convenio está nulo");
 
             Covenant = covenant;
         }

@@ -60,36 +60,24 @@ namespace SmartClinic.Domain.Entities.Business
         public void SetCovenant(Covenant covenant)
         {
             if(covenant == null)
-                throw new ArgumentNullException("covenant");
-            
-            if(!covenant.IsActive())
-                throw new InvalidOperationException("O convenio associado ao paciente não está nas condições validas");
+                throw new InvalidOperationException("Convenio do paciente não pode ser nulo ou vazio");
 
             Covenant = covenant;
         }
 
         public void SetPhone(Phone phone)
         {
-            if (phone == null)
-                Phone = new Phone();
-            else
-                Phone = phone;
+            Phone = phone ?? new Phone();
         }
 
         public void SetRg(Rg rg)
         {
-            if (rg == null)
-                Rg = new Rg();
-            else
-                Rg = rg;
+            Rg = rg ?? new Rg();
         }
 
         public void SetAddress(Address address)
         {
-            if (address == null)
-                Address = new Address();
-            else
-                Address = address;
+            Address = address ?? new Address();
         }
 
         #endregion

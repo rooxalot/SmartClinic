@@ -1,13 +1,14 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using SmartClinic.Domain.Interfaces.CrossCutting;
 
 namespace SmartClinic.Infrastructure.CrossCutting.Security
 {
-    public class Encrypter
+    public class Encrypter : IEncrypter
     {
         private static readonly MD5 Cryptografer = MD5.Create();
 
-        public static string Encrypt(string value)
+        public string Encrypt(string value)
         {
             var stringBytes = Encoding.ASCII.GetBytes(value);
             var hash = Cryptografer.ComputeHash(stringBytes);

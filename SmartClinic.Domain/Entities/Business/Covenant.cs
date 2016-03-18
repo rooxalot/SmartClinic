@@ -13,45 +13,14 @@ namespace SmartClinic.Domain.Entities.Business
         {
         }
 
-        public Covenant(string name, bool active, DateTime startTerm, DateTime endTerm, Phone phone, Cnpj cnpj, 
-            string offeredPlans)
+        public Covenant(string name, bool active, DateTime startTerm, DateTime endTerm, Phone phone, Cnpj cnpj, string offeredPlans)
         {
             SetName(name);
             Active = active;
             SetPhone(phone);
             SetCnpj(cnpj);
-
-            if (startTerm > endTerm)
-            {
-                SetStartTerm(endTerm);
-                SetEndTerm(startTerm);
-            }
-            else
-            {
-                SetStartTerm(startTerm);
-                SetEndTerm(endTerm);
-            }
-
+            SetStartAndEndTerm(startTerm, endTerm);
             SetOfferedPlans(offeredPlans);
-        }
-
-        public Covenant(string name, bool active, DateTime startTerm, DateTime endTerm, Phone phone, Cnpj cnpj)
-        {
-            SetName(name);
-            Active = active;
-            SetPhone(phone);
-            SetCnpj(cnpj);
-
-            if (startTerm > endTerm)
-            {
-                SetStartTerm(endTerm);
-                SetEndTerm(startTerm);
-            }
-            else
-            {
-                SetStartTerm(startTerm);
-                SetEndTerm(endTerm);
-            }
         }
 
         #endregion
@@ -91,18 +60,12 @@ namespace SmartClinic.Domain.Entities.Business
 
         public void SetPhone(Phone phone)
         {
-            if (phone == null)
-                Phone = new Phone();
-            else
-                Phone = phone;
+            Phone = phone ?? new Phone();
         }
 
         public void SetCnpj(Cnpj cnpj)
         {
-            if (cnpj == null)
-                Cnpj = new Cnpj();
-            else
-                Cnpj = cnpj;
+            Cnpj = cnpj ?? new Cnpj();
         }
 
         public void SetOfferedPlans(string plans)
@@ -120,14 +83,19 @@ namespace SmartClinic.Domain.Entities.Business
             OfferedPlans = plans;
         }
 
-        public void SetStartTerm(DateTime start)
+        public void SetStartAndEndTerm(DateTime start, DateTime? end)
         {
-            StartTerm = start;
-        }
-
-        public void SetEndTerm(DateTime end)
-        {
-            EndTerm = end;
+            // Caso seja colocado como inicio do contrato de convenio uma data maior que o fim, é realizada uma inversão nas datas.
+            if (end.HasValue && start > end)
+            {
+                StartTerm = end.Value;
+                EndTerm = start;
+            }
+            else
+            {
+                StartTerm = start;
+                EndTerm = end;
+            }
         }
 
         public bool IsActive()

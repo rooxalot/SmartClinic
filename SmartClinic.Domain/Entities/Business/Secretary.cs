@@ -56,26 +56,17 @@ namespace SmartClinic.Domain.Entities.Business
 
         public void SetPhone(Phone phone)
         {
-            if (phone == null)
-                Phone = new Phone();
-            else
-                Phone = phone;
+            Phone = phone ?? new Phone();
         }
 
         public void SetRg(Rg rg)
         {
-            if (rg == null)
-                Rg = new Rg();
-            else
-                Rg = rg;
+            Rg = rg ?? new Rg();
         }
 
         public void SetAddress(Address address)
         {
-            if (address == null)
-                Address = new Address();
-            else
-                Address = address;
+            Address = address ?? new Address();
         }
 
         #endregion

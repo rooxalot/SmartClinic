@@ -67,14 +67,6 @@ namespace SmartClinic.Domain.Entities.Business
             Login = login;
         }
 
-        public void ChangePassword(string currentPassword, string newPassword)
-        {
-            if (currentPassword != Password)
-                throw new Exception("A senha informada não coincide com a senha do usuário");
-
-            SetPassword(newPassword);
-        }
-
         #endregion
     }
 }

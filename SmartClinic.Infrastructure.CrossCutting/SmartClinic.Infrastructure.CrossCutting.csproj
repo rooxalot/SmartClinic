@@ -54,6 +54,10 @@
       <Project>{2c8a1cd6-7753-4b3e-bb37-c7d33cedb4ad}</Project>
       <Name>SmartClinic.Infrastructure.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmartClinic.Domain\SmartClinic.Domain.csproj">
+      <Project>{2c0b9799-2532-4859-8424-8203a835a6ee}</Project>
+      <Name>SmartClinic.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
