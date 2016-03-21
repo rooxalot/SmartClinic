@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\SmartClinicContext.cs" />
-    <Compile Include="Context\SmartClinicTestInitializer.cs" />
     <Compile Include="EntityConfig\AppointmentConfig.cs" />
     <Compile Include="EntityConfig\ClinicConfig.cs" />
     <Compile Include="EntityConfig\CovenantConfig.cs" />

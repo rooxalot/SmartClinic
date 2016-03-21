@@ -47,22 +47,6 @@ namespace SmartClinic.Data.Repositories.Business
             }
         }
 
-        public IEnumerable<Appointment> GetPendingAppointments(int days = 0)
-        {
-            IEnumerable<Appointment> appointments = null;
-
-
-            using (SmartClinicContext)
-                appointments = SmartClinicContext.Appointments.ToList();
-
-            if (days > 0)
-                appointments = appointments.Where(a => a.IsPending() && a.Date <= DateTime.Now.AddDays(days));
-
-            appointments = appointments.Where(a => a.IsPending().Equals(true));
-
-            return appointments;
-        }
-
         #endregion
     }
 }

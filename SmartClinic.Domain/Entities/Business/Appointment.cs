@@ -6,11 +6,6 @@ namespace SmartClinic.Domain.Entities.Business
 {
     public class Appointment : BaseEntity
     {
-        #region Constants
-
-        public const int DescriptionMaxLength = 200;
-
-        #endregion
 
         #region Constructor
 
@@ -41,6 +36,12 @@ namespace SmartClinic.Domain.Entities.Business
             if(!string.IsNullOrEmpty(description))
                 SetDescription(description);
         }
+
+        #endregion
+
+        #region Constants
+
+        public const int DescriptionMaxLength = 200;
 
         #endregion
 

@@ -17,8 +17,7 @@ namespace SmartClinic.Data.Context
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
 
-            //Initializer de testes, modificar futuramente.
-            Database.SetInitializer(new SmartClinicTestInitializer());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<SmartClinicContext>());
             Database.Initialize(false);
         }
 
@@ -33,12 +32,12 @@ namespace SmartClinic.Data.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //Convention Removal
+            //Remoção de convenções default do Entity Framework
             modelBuilder.Conventions.Remove<PluralizingEntitySetNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-            //Entity Config
+            //Adicção das configurações especificas das entidades
             modelBuilder.Configurations.Add(new DoctorConfig());
             modelBuilder.Configurations.Add(new AppointmentConfig());
             modelBuilder.Configurations.Add(new ClinicConfig());
@@ -48,7 +47,7 @@ namespace SmartClinic.Data.Context
             modelBuilder.Configurations.Add(new SecretaryConfig());
             modelBuilder.Configurations.Add(new UserConfig());
 
-            //Default Configurations
+            //Configurações padrão
             modelBuilder.Properties()
                 .Where(p => p.Name == "ID" || p.Name == "Id")
                 .Configure(p => p.IsKey());
@@ -69,7 +68,7 @@ namespace SmartClinic.Data.Context
                 .Configure(p => p.HasMaxLength(128));
 
 
-            /*Complex Type Config*/
+            //Configurações dos tipos complexos
 
             //Cnpj
             modelBuilder.ComplexType<Cnpj>()
