@@ -65,6 +65,33 @@ namespace SmartClinic.Domain.DomainServices
             return appointment;
         }
 
+        public Appointment SetAppointmentCancelation(Appointment appointment, bool isCanceled)
+        {
+            //Descancelamento da consulta
+            if (!isCanceled)
+            {
+                var doctor = _unitOfWork.DoctorRepository.Get(appointment.DoctorId);
+                if (doctor == null)
+                {
+                    appointment.SetCanceled(true);
+                    throw new Exception("O médico da consulta está nulo, para que seja possível descancelar a consulta, associe um médico valido a mesma");
+                }
+                else
+                {
+                    if (!doctor.Active)
+                    {
+                        appointment.SetCanceled(true);
+                        throw new Exception("O médico da consulta está inativo, para que seja possível descancelar a consulta, associe um médico valido a mesma");
+                    }
+                }
+            }
+            //Cancelamento da consulta
+            else
+                appointment.SetCanceled(true);
+
+            return appointment;
+        }
+
         #endregion
     }
 }

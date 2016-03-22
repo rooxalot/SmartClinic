@@ -7,6 +7,7 @@ namespace SmartClinic.Domain.Interfaces.DomainServices
     {
         Appointment SetAppointmentCovenant(Appointment appointment, Covenant covenant);
         Appointment SetAppointmentDoctor(Appointment appointment, Doctor doctor);
+        Appointment SetAppointmentCancelation(Appointment appointment, bool isCanceled);
         IEnumerable<Appointment> GetPendingAppointments(int days = 0);
     }
 }

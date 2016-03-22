@@ -6,7 +6,7 @@ namespace SmartClinic.Domain.ValueObjects
     {
         #region Properties
 
-        public long Code { get; private set; }
+        public long? Code { get; private set; }
 
         #endregion
 
@@ -14,6 +14,9 @@ namespace SmartClinic.Domain.ValueObjects
 
         public string GetFormatedRg()
         {
+            if (Code == null)
+                return null;
+
             var rgString = Code.ToString();
             var rgStart = rgString.Substring(0, 2);
             var rgMiddle1 = rgString.Substring(2, 3);
@@ -41,8 +44,8 @@ namespace SmartClinic.Domain.ValueObjects
 
         public Rg(string code)
         {
-            if(string.IsNullOrEmpty(code))
-                throw new InvalidOperationException("O Código do Rg não pode ser nulo ou vazio");
+            if(code == string.Empty)
+                throw new InvalidOperationException("O Código do Rg não pode ser vazio");
 
             if(code.Length < RgMinLength || code.Length > RgMaxLength)
                 throw new InvalidOperationException(string.Format("O Rg deve possuir entre {0} e {1} caracteres", RgMinLength, RgMaxLength));

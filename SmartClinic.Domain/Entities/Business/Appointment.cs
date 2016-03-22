@@ -51,6 +51,7 @@ namespace SmartClinic.Domain.Entities.Business
         public DateTime Date { get; private set; }
         public decimal? AppointmentPrice { get; private set; }
         public AppointmentType AppointmentType { get; set; }
+        public bool Canceled { get; private set; }
         public Guid DoctorId { get; private set; }
         public virtual Doctor Doctor { get; private set; }
         public Guid PacientId { get; private set; }
@@ -113,6 +114,11 @@ namespace SmartClinic.Domain.Entities.Business
         public bool IsPending()
         {
             return Date > DateTime.Now;
+        }
+
+        public void SetCanceled(bool canceled)
+        {
+            Canceled = canceled;
         }
 
         #endregion
