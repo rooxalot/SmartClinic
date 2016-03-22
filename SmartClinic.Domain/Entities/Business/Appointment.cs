@@ -14,17 +14,7 @@ namespace SmartClinic.Domain.Entities.Business
         {
         }
 
-        public Appointment(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate, AppointmentType type)
-        {
-            SetDoctor(doctor);
-            SetPacient(pacient);
-            SetCovenant(covenant);
-            SetAppointmentDate(appointmentDate);
-            AppointmentType = type;
-        }
-
-        public Appointment(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate, decimal? price, 
-            AppointmentType type, string description = null)
+        public Appointment(Doctor doctor, Pacient pacient, Covenant covenant, DateTime appointmentDate, decimal? price, AppointmentType type, string description)
         {
             SetDoctor(doctor);
             SetPacient(pacient);
