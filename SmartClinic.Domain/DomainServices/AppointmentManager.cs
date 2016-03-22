@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Interfaces.DomainServices;
-using SmartClinic.Domain.Interfaces.Repositories.Business;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
 
 namespace SmartClinic.Domain.DomainServices
