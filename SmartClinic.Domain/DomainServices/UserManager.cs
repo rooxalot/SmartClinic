@@ -8,8 +8,14 @@ namespace SmartClinic.Domain.DomainServices
 {
     public class UserManager : IUserManager
     {
+        #region Properties
+
         private readonly IUserRepository _userRepository;
         private readonly IEncrypter _encrypter;
+
+        #endregion
+
+        #region Constructor
 
         public UserManager(IUserRepository userRepository, IEncrypter encrypter)
         {
@@ -17,6 +23,9 @@ namespace SmartClinic.Domain.DomainServices
             _encrypter = encrypter;
         }
 
+        #endregion
+
+        #region Services
 
         /// <summary>
         /// Altera a senha do usuário realizando utilizando-se de criptografia
@@ -36,5 +45,7 @@ namespace SmartClinic.Domain.DomainServices
 
             return user;
         }
+
+        #endregion
     }
 }

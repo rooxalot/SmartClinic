@@ -2,7 +2,6 @@
 using System.Linq;
 using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Interfaces.DomainServices;
-using SmartClinic.Domain.Interfaces.Repositories.Business;
 using SmartClinic.Domain.ValueObjects;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
 
@@ -41,7 +40,6 @@ namespace SmartClinic.Domain.DomainServices
 
             doctor.SetCrm(crm);
             return doctor;
-
         }
 
         public Doctor RemoveDoctor(Doctor doctor)

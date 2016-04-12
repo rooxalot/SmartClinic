@@ -7,12 +7,22 @@ namespace SmartClinic.Domain.DomainServices
 {
     public class PacientManager : IPacientManager
     {
+        #region Prodperties
+
         private readonly IPacientRepository _pacientRepository;
+
+        #endregion
+
+        #region Constructor
 
         public PacientManager(IPacientRepository pacientRepository)
         {
             _pacientRepository = pacientRepository;
         }
+
+        #endregion
+
+        #region Services
 
         public Pacient SetPacientCovenant(Pacient pacient, Covenant covenant)
         {
@@ -23,5 +33,7 @@ namespace SmartClinic.Domain.DomainServices
             pacient.SetCovenant(covenant);
             return pacient;
         }
+
+        #endregion
     }
 }

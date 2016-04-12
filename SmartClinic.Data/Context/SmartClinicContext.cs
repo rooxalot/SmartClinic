@@ -30,6 +30,7 @@ namespace SmartClinic.Data.Context
         public DbSet<Secretary> Secretaries { get; set; }
         public DbSet<User> Users { get; set; }
 
+        //Ao criar o modelo, o faz adicionando as configurações personalizadas do mesmo.
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Remoção de convenções default do Entity Framework
@@ -59,7 +60,6 @@ namespace SmartClinic.Data.Context
             modelBuilder.Properties()
                 .Where(p => Regex.IsMatch(p.Name, @"^\w*?Id$"))
                 .Configure(p => p.HasColumnName(p.ClrPropertyInfo.Name.Replace("Id", "ID")));
-
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));

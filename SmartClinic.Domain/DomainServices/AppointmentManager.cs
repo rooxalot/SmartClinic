@@ -64,10 +64,10 @@ namespace SmartClinic.Domain.DomainServices
             return appointment;
         }
 
-        public Appointment SetAppointmentCancelation(Appointment appointment, bool isCanceled)
+        public Appointment SetAppointmentCancelation(Appointment appointment, bool isCancelation)
         {
             //Descancelamento da consulta
-            if (!isCanceled)
+            if (!isCancelation)
             {
                 var doctor = _unitOfWork.DoctorRepository.Get(appointment.DoctorId);
                 if (doctor == null)
@@ -82,6 +82,8 @@ namespace SmartClinic.Domain.DomainServices
                         appointment.SetCanceled(true);
                         throw new Exception("O médico da consulta está inativo, para que seja possível descancelar a consulta, associe um médico valido a mesma");
                     }
+                    else
+                        appointment.SetCanceled(false);
                 }
             }
             //Cancelamento da consulta
