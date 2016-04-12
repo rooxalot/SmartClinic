@@ -50,6 +50,20 @@ namespace SmartClinic.Domain.ValueObjects
 
         #region Methods
 
+        public static Phone CreatePhone(string dddPhone, string phoneNumber)
+        {
+            Phone phone = new Phone();
+
+            if (string.IsNullOrWhiteSpace(dddPhone) && !string.IsNullOrWhiteSpace(phoneNumber))
+                phone.SetNumber(phoneNumber);
+            else if (!string.IsNullOrWhiteSpace(dddPhone) && !string.IsNullOrWhiteSpace(phoneNumber))
+            {
+                phone.SetNumber(phoneNumber);
+                phone.SetDdd(dddPhone);
+            }
+            return phone;
+        }
+
         public void SetNumber(string number)
         {
             if(string.IsNullOrEmpty(number))
