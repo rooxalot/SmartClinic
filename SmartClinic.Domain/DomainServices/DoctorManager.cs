@@ -42,7 +42,7 @@ namespace SmartClinic.Domain.DomainServices
             return doctor;
         }
 
-        public Doctor RemoveDoctor(Doctor doctor)
+        public Doctor DeactivateDoctor(Doctor doctor)
         {
             var doctorAppointments = _unitOfWork.AppoitmentRepository.GetAppointmentsByDoctor(doctor);
 

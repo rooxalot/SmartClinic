@@ -7,6 +7,6 @@ namespace SmartClinic.Domain.Interfaces.DomainServices
     public interface IDoctorManager
     {
         Doctor SetDoctorCrm(Doctor doctor, Crm crm);
-        Doctor RemoveDoctor(Doctor doctor);
+        Doctor DeactivateDoctor(Doctor doctor);
     }
 }

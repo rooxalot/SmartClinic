@@ -32,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		RequisitosSmartClinic.doc = RequisitosSmartClinic.doc
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.Application", "..\..\..\SmartClinic\SmartClinic.Application\SmartClinic.Application.csproj", "{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.Application", "SmartClinic.Application\SmartClinic.Application.csproj", "{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

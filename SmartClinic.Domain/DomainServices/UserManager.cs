@@ -34,7 +34,7 @@ namespace SmartClinic.Domain.DomainServices
         /// <param name="confirmPassword">Confirmação de senha</param>
         /// <param name="newPassword">Nova senha a ser atribuida ao usuário</param>
         /// <returns></returns>
-        public User ChangePassword(User user, string confirmPassword, string newPassword)
+        public User ChangePassword(User user, string newPassword, string confirmPassword)
         {
             var encryptedConfirmPassword = _encrypter.Encrypt(confirmPassword);
             if (user.Password != encryptedConfirmPassword)
