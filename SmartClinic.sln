@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.Application", "SmartClinic.Application\SmartClinic.Application.csproj", "{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartClinic.MVC", "SmartClinic.MVC\SmartClinic.MVC.csproj", "{FFB2EFAD-E2CD-41FC-8452-E5E14296218B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB2EFAD-E2CD-41FC-8452-E5E14296218B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB2EFAD-E2CD-41FC-8452-E5E14296218B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB2EFAD-E2CD-41FC-8452-E5E14296218B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB2EFAD-E2CD-41FC-8452-E5E14296218B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{0B7C6958-6870-4EB9-92EA-C0E7B6F617A2} = {0FDAB687-0D98-4359-9622-4EBFC6AB3D47}
 		{C98E5FA2-2005-49C2-8818-1B4E46F40028} = {0B7C6958-6870-4EB9-92EA-C0E7B6F617A2}
 		{E566EEA2-C644-46B2-BCC8-EB1C366F33CF} = {6800B57F-C74F-47CD-B5B3-AFA74158E7E9}
+		{FFB2EFAD-E2CD-41FC-8452-E5E14296218B} = {3FC0FF17-A8F6-4F1D-B70B-3F87823FE9C7}
 	EndGlobalSection
 EndGlobal

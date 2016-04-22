@@ -1,11 +1,16 @@
 ﻿using Ninject.Modules;
+using SmartClinic.Application.AppServices;
 using SmartClinic.Data.Context;
 using SmartClinic.Data.Repositories.Base;
 using SmartClinic.Data.Repositories.Business;
 using SmartClinic.Data.UnitOfWork;
+using SmartClinic.Domain.DomainServices;
+using SmartClinic.Domain.Interfaces.CrossCutting;
+using SmartClinic.Domain.Interfaces.DomainServices;
 using SmartClinic.Domain.Interfaces.Repositories.Base;
 using SmartClinic.Domain.Interfaces.Repositories.Business;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
+using SmartClinic.Infrastructure.CrossCutting.Security;
 using System.Data.Entity;
 
 namespace SmartClinic.Infrastructure.IoC
@@ -17,6 +22,9 @@ namespace SmartClinic.Infrastructure.IoC
             //Contexts
             Bind<DbContext>().To<DbContext>();
             Bind<SmartClinicContext>().To<SmartClinicContext>();
+
+            //CrossCutting
+            Bind<IEncrypter>().To<Encrypter>();
 
             //Repositories
             Bind(typeof (IRepositoryBase<>)).To(typeof (RepositoryBase<>));
@@ -31,7 +39,21 @@ namespace SmartClinic.Infrastructure.IoC
 
             //UnitOfWork
             Bind<IUnitOfWork>().To<UnitOfWork>();
-            
+
+            //DomainServices
+            Bind<IAppointmentManager>().To<AppointmentManager>();
+            Bind<IDoctorManager>().To<DoctorManager>();
+            Bind<IPacientManager>().To<PacientManager>();
+            Bind<IUserManager>().To<UserManager>();
+
+            //AppServices
+            Bind<ClinicAppService>().To<ClinicAppService>();
+            Bind<CovenantAppService>().To<CovenantAppService>();
+            Bind<DoctorAppService>().To<DoctorAppService>();
+            Bind<MedicalAgendaAppService>().To<MedicalAgendaAppService>();
+            Bind<PacientAppService>().To<PacientAppService>();
+            Bind<SecretaryAppService>().To<SecretaryAppService>();
+            Bind<UserAppService>().To<UserAppService>();
         }
     }
 }

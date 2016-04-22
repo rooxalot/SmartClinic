@@ -44,6 +44,7 @@
     <Compile Include="AppServices\MedicalAgendaAppService.cs" />
     <Compile Include="AppServices\PacientAppService.cs" />
     <Compile Include="AppServices\SecretaryAppService.cs" />
+    <Compile Include="AppServices\UserAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

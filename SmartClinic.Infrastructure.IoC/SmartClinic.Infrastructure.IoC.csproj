@@ -61,6 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SmartClinic.Application\SmartClinic.Application.csproj">
+      <Project>{e566eea2-c644-46b2-bcc8-eb1c366f33cf}</Project>
+      <Name>SmartClinic.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SmartClinic.Data\SmartClinic.Infrastructure.Data.csproj">
       <Project>{2c8a1cd6-7753-4b3e-bb37-c7d33cedb4ad}</Project>
       <Name>SmartClinic.Infrastructure.Data</Name>
@@ -68,6 +72,10 @@
     <ProjectReference Include="..\SmartClinic.Domain\SmartClinic.Domain.csproj">
       <Project>{2c0b9799-2532-4859-8424-8203a835a6ee}</Project>
       <Name>SmartClinic.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartClinic.Infrastructure.CrossCutting\SmartClinic.Infrastructure.CrossCutting.csproj">
+      <Project>{6df339c6-21ba-4498-807c-4f15edfa8f1e}</Project>
+      <Name>SmartClinic.Infrastructure.CrossCutting</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

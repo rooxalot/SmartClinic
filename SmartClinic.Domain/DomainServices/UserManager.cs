@@ -2,7 +2,7 @@
 using SmartClinic.Domain.Entities.Business;
 using SmartClinic.Domain.Interfaces.CrossCutting;
 using SmartClinic.Domain.Interfaces.DomainServices;
-using SmartClinic.Domain.Interfaces.Repositories.Business;
+using SmartClinic.Domain.Interfaces.UnitOfWork;
 
 namespace SmartClinic.Domain.DomainServices
 {
@@ -10,16 +10,16 @@ namespace SmartClinic.Domain.DomainServices
     {
         #region Properties
 
-        private readonly IUserRepository _userRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IEncrypter _encrypter;
 
         #endregion
 
         #region Constructor
 
-        public UserManager(IUserRepository userRepository, IEncrypter encrypter)
+        public UserManager(IUnitOfWork unitOfWork, IEncrypter encrypter)
         {
-            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
             _encrypter = encrypter;
         }
 
@@ -33,7 +33,7 @@ namespace SmartClinic.Domain.DomainServices
         /// <param name="user">Usuário a ter a senha modificada</param>
         /// <param name="confirmPassword">Confirmação de senha</param>
         /// <param name="newPassword">Nova senha a ser atribuida ao usuário</param>
-        /// <returns></returns>
+        /// <returns>Objeto User com a senha alterada</returns>
         public User ChangePassword(User user, string newPassword, string confirmPassword)
         {
             var encryptedConfirmPassword = _encrypter.Encrypt(confirmPassword);
@@ -44,6 +44,16 @@ namespace SmartClinic.Domain.DomainServices
             user.SetPassword(encryptedNewPassword);
 
             return user;
+        }
+
+        public User Authenticate(string login, string password)
+        {
+            var encryptedPassword = _encrypter.Encrypt(password);
+            using (_unitOfWork)
+            {
+                var user = _unitOfWork.UserRepository.GetValidUser(login, encryptedPassword);
+                return user;
+            }
         }
 
         #endregion
