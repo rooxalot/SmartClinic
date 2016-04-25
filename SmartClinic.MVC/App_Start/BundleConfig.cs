@@ -31,7 +31,9 @@ namespace SmartClinic.MVC
                 "~/Content/css/custom.css",
                 "~/Content/css/fonts/css/font-awesome.min.css",
                 "~/Content/css/animate.min.css",
-                "~/Content/css/icheck/flat/green.css"));
+                "~/Content/css/icheck/flat/green.css",
+                "~/Content/css/maps/jquery-jvectormap-2.0.3.css",
+                "~/Content/css/floatexamples.css"));
         }
     }
 }
