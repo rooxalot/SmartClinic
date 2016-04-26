@@ -30,7 +30,7 @@ namespace SmartClinic.Application.AppServices
 
         public Covenant RegisterCovenant(string name, bool active, DateTime startTerm, DateTime endTerm, string dddPhone, string phoneNumber, string cnpjCode, string offeredPlans)
         {
-            Cnpj cnpj = cnpjCode == null ? null : new Cnpj(cnpjCode);
+            var cnpj = cnpjCode == null ? null : new Cnpj(cnpjCode);
             var phone = Phone.CreatePhone(dddPhone, phoneNumber);
 
             var covenant = new Covenant(name, active, startTerm, endTerm, phone, cnpj, offeredPlans);

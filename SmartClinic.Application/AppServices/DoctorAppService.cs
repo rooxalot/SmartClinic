@@ -31,7 +31,7 @@ namespace SmartClinic.Application.AppServices
         public void RegisterDoctor(string name, string rg, string crmCode, Uf crmUf, bool active, Sex sex,
             string publicPlace, string complement, string number, string neighborhood, string city, Uf addressUf)
         {
-            Rg doctorRg = (rg == null ? null : new Rg(rg));
+            var doctorRg = (rg == null ? null : new Rg(rg));
             var doctorCrm = new Crm(crmCode, crmUf);
             var address = new Address(publicPlace, complement, number, neighborhood, city, addressUf);
             var doctor = new Doctor(name, doctorRg, doctorCrm, active, sex, address);

@@ -49,11 +49,8 @@ namespace SmartClinic.Domain.DomainServices
         public User Authenticate(string login, string password)
         {
             var encryptedPassword = _encrypter.Encrypt(password);
-            using (_unitOfWork)
-            {
-                var user = _unitOfWork.UserRepository.GetValidUser(login, encryptedPassword);
-                return user;
-            }
+            var user = _unitOfWork.UserRepository.GetValidUser(login, encryptedPassword);
+            return user;
         }
 
         #endregion

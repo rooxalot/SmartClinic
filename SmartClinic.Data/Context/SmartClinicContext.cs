@@ -17,7 +17,7 @@ namespace SmartClinic.Data.Context
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
 
-            Database.SetInitializer(new CreateDatabaseIfNotExists<SmartClinicContext>());
+            Database.SetInitializer(new ContextInitializer());
             Database.Initialize(false);
         }
 

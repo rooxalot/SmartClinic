@@ -30,13 +30,13 @@ namespace SmartClinic.Domain.DomainServices
             if (days < 0)
                 throw new Exception("Filtro de dias para consultas não pode ser menor que 0");
 
-            IEnumerable<Appointment> appointments = null;
+            IEnumerable<Appointment> appointments;
             if (days > 0)
                 appointments = _unitOfWork
                     .AppoitmentRepository
                     .Find(a => a.IsPending() && a.Date <= DateTime.Now.AddDays(days));
             else
-                appointments = appointments = _unitOfWork
+                appointments = _unitOfWork
                     .AppoitmentRepository
                     .Find(a => a.IsPending().Equals(true));
 

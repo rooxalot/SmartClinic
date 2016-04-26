@@ -10,7 +10,7 @@ namespace SmartClinic.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly UserAppService _userAppService;
-        private bool isAuthenticated;
+        private bool _isAuthenticated;
 
         public HomeController(UserAppService userAppService)
         {
@@ -19,17 +19,17 @@ namespace SmartClinic.MVC.Controllers
 
         public ActionResult Index()
         {
-            if(isAuthenticated)
+            if(_isAuthenticated)
                 return View();
-            else
-                return View("Login");
+            
+            return View("Login");
         }
 
         public ActionResult Login()
         {
             ViewBag.Title = "SmartClinic - Login";
             ViewBag.ShowErrorDiv = false;
-            isAuthenticated = false;
+            _isAuthenticated = false;
 
             return View();
         }
@@ -44,12 +44,12 @@ namespace SmartClinic.MVC.Controllers
 
             if (authenticated)
             {
-                isAuthenticated = true;
+                _isAuthenticated = true;
                 return View("Index");
             }
             else
             {
-                isAuthenticated = false;
+                _isAuthenticated = false;
                 ViewBag.ShowErrorDiv = true;
                 return View();
             }

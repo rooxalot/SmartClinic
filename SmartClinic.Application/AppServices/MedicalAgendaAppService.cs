@@ -27,7 +27,8 @@ namespace SmartClinic.Application.AppServices
 
         #region Appservices
 
-        public Appointment SetNewAppointment(Guid doctorID, Guid pacientID, Guid covenantID, DateTime appointmentDate, decimal? price, AppointmentType type, string description)
+        public Appointment SetNewAppointment(Guid doctorID, Guid pacientID, Guid covenantID, DateTime appointmentDate, decimal? price, 
+            AppointmentType type, string description)
         {
             using (_unitOfWork)
             {

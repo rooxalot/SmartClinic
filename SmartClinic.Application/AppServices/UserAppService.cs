@@ -11,8 +11,14 @@ namespace SmartClinic.Application.AppServices
 {
     public class UserAppService
     {
+        #region Properties
+
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUserManager _manager;
+
+        #endregion
+
+        #region Constructor
 
         public UserAppService(IUnitOfWork unitOfWork, IUserManager userManager)
         {
@@ -20,11 +26,19 @@ namespace SmartClinic.Application.AppServices
             _manager = userManager;
         }
 
+        #endregion
+
+        #region AppServices
+
         public bool Authenticate(string login, string password)
         {
-            var user = _manager.Authenticate(login, password);
+            using (_unitOfWork)
+            {
+                var user = _manager.Authenticate(login, password);
+                return (user != null);
+            }
+        }
 
-            return (user != null);
-        } 
+        #endregion
     }
 }

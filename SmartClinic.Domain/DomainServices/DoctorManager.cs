@@ -44,7 +44,7 @@ namespace SmartClinic.Domain.DomainServices
 
         public Doctor DeactivateDoctor(Doctor doctor)
         {
-            var doctorAppointments = _unitOfWork.AppoitmentRepository.GetAppointmentsByDoctor(doctor);
+            var doctorAppointments = _unitOfWork.AppoitmentRepository.GetAppointmentsByDoctor(doctor).ToList();
 
             if (doctorAppointments.Any())
             {

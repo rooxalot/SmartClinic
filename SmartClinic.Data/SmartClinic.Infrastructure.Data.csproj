@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ContextInitializer.cs" />
     <Compile Include="Context\SmartClinicContext.cs" />
     <Compile Include="EntityConfig\AppointmentConfig.cs" />
     <Compile Include="EntityConfig\ClinicConfig.cs" />
