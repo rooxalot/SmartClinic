@@ -23,6 +23,7 @@ body.nav-sm .navbar.nav_title a i {
 .site_title i {
   border: 1px solid #EAEAEA;
   padding: 5px 6px;
+  background-color: #51c89a;
   border-radius: 50%;
 }
 body.nav-sm .main_container .top_nav {
@@ -103,8 +104,8 @@ body.nav-sm .profile {
 }
 .profile_info {
   padding: 25px 10px 10px;
-  width: 65%;
-  float: left;
+  width: 100%;
+  /* float: left; */
 }
 .profile_info span {
   font-size: 13px;
@@ -176,7 +177,9 @@ body .container.body .right_col {
 body.nav-md .container.body .right_col {
   padding: 10px 20px 0;
   margin-left: 230px;
+  min-height: 620px;
 }
+
 .nav_title {
   width: 230px;
   float: left;
@@ -5317,6 +5320,7 @@ ul.notifications {
   display: none;
 }
 .pace .pace-progress {
+  display: none;
   background: #1abb9c;
   position: fixed;
   z-index: 2000;

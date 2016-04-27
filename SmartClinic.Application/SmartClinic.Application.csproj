@@ -38,6 +38,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppModels\User\LoggedUserModel.cs" />
     <Compile Include="AppServices\ClinicAppService.cs" />
     <Compile Include="AppServices\CovenantAppService.cs" />
     <Compile Include="AppServices\DoctorAppService.cs" />

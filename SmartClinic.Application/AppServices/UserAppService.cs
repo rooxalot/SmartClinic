@@ -1,11 +1,7 @@
-﻿using SmartClinic.Domain.Entities.Business;
+﻿using SmartClinic.Application.AppModels.User;
 using SmartClinic.Domain.Interfaces.DomainServices;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SmartClinic.Infrastructure.CrossCutting.Security;
 
 namespace SmartClinic.Application.AppServices
 {
@@ -32,11 +28,30 @@ namespace SmartClinic.Application.AppServices
 
         public bool Authenticate(string login, string password)
         {
+            bool logged = false;
             using (_unitOfWork)
             {
                 var user = _manager.Authenticate(login, password);
-                return (user != null);
+                if (user == null)
+                    return logged;
+
+                SessionManager.LoggedUser = user;
+                logged = true;
+
+                return logged;
             }
+        }
+
+        public bool HasUserAuthenticated()
+        {
+            return SessionManager.LoggedUser != null;
+        }
+
+        public void LogoutUser()
+        {
+            if (HasUserAuthenticated())
+                SessionManager.LoggedUser = null;
+
         }
 
         #endregion

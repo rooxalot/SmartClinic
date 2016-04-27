@@ -1,35 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using SmartClinic.Application.AppServices;
+using SmartClinic.Application.AppModels.User;
+using SmartClinic.Infrastructure.CrossCutting.Security;
 
 namespace SmartClinic.MVC.Controllers
 {
     public class HomeController : Controller
     {
+        #region Properties
+
         private readonly UserAppService _userAppService;
-        private bool _isAuthenticated;
+
+        #endregion
+
+        #region Constructor
 
         public HomeController(UserAppService userAppService)
         {
             _userAppService = userAppService;
         }
 
+        #endregion
+
+        #region Actions
+
         public ActionResult Index()
         {
-            if(_isAuthenticated)
+            if (_userAppService.HasUserAuthenticated())
                 return View();
-            
-            return View("Login");
+
+            return RedirectToAction("Login");
         }
 
         public ActionResult Login()
         {
             ViewBag.Title = "SmartClinic - Login";
             ViewBag.ShowErrorDiv = false;
-            _isAuthenticated = false;
 
             return View();
         }
@@ -40,20 +46,23 @@ namespace SmartClinic.MVC.Controllers
             var login = form["Login"];
             var password = form["Password"];
 
-            var authenticated = _userAppService.Authenticate(login, password);
+            var authenticatedUser = _userAppService.Authenticate(login, password);
 
-            if (authenticated)
-            {
-                _isAuthenticated = true;
-                return View("Index");
-            }
+            if (authenticatedUser)
+                return RedirectToAction("Index");
             else
             {
-                _isAuthenticated = false;
                 ViewBag.ShowErrorDiv = true;
                 return View();
             }
-                
         }
+
+        public ActionResult Logout()
+        {
+            _userAppService.LogoutUser();
+            return RedirectToAction("Login");
+        }
+
+        #endregion
     }
 }

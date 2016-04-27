@@ -18,6 +18,10 @@ namespace SmartClinic.Data.EntityConfig
                 .HasColumnAnnotation(
                     IndexAnnotation.AnnotationName, 
                     new IndexAnnotation(new IndexAttribute("IXUserLogin_Unique") {IsUnique = true}));
+
+            Property(u => u.Name)
+                .IsRequired()
+                .HasMaxLength(User.NameMaxLength);
         }
     }
 }
