@@ -32,7 +32,7 @@
                                 <img src="~/Layout/images/img.jpg" alt="..." class="img-circle profile_img">
                             </div>
                             <div class="profile_info">
-                                <span>Bem vindo, @SmartClinic.Infrastructure.CrossCutting.Security.SessionManager.LoggedUser.Name</span>
+                                <span>Bem vindo, @HttpContext.Current.User.Identity.Name</span>
                             </div>
                         </div>
                         <!-- /menu prile quick info -->
@@ -191,7 +191,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="~/Layout/images/img.jpg" alt="">@SmartClinic.Infrastructure.CrossCutting.Security.SessionManager.LoggedUser.Name
+                                    <img src="~/Layout/images/img.jpg" alt="">@HttpContext.Current.User.Identity.Name
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">

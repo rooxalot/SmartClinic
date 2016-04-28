@@ -201,6 +201,7 @@ body.nav-md .container.body .right_col {
   }
   .right_col {
     padding: 10px !important;
+    min-height: 590px;
   }
 }
 @media (max-width: 1200px) {

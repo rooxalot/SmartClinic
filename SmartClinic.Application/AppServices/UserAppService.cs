@@ -1,7 +1,7 @@
-﻿using SmartClinic.Application.AppModels.User;
-using SmartClinic.Domain.Interfaces.DomainServices;
+﻿using SmartClinic.Domain.Interfaces.DomainServices;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
 using SmartClinic.Infrastructure.CrossCutting.Security;
+using System.Web.Security;
 
 namespace SmartClinic.Application.AppServices
 {
@@ -28,17 +28,18 @@ namespace SmartClinic.Application.AppServices
 
         public bool Authenticate(string login, string password)
         {
-            bool logged = false;
             using (_unitOfWork)
             {
                 var user = _manager.Authenticate(login, password);
                 if (user == null)
-                    return logged;
+                    return false;
 
+                //Adiciona o usuário na sessão
                 SessionManager.LoggedUser = user;
-                logged = true;
+                //Autentica o usuário usando FormsAuthentication
+                FormsAuthentication.SetAuthCookie(user.Name, false);
 
-                return logged;
+                return true;
             }
         }
 
@@ -50,7 +51,10 @@ namespace SmartClinic.Application.AppServices
         public void LogoutUser()
         {
             if (HasUserAuthenticated())
+            {
                 SessionManager.LoggedUser = null;
+                FormsAuthentication.SignOut();
+            }
 
         }
 

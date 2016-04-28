@@ -3,6 +3,7 @@ using SmartClinic.Application.AppServices;
 using SmartClinic.Application.AppModels.User;
 using SmartClinic.Infrastructure.CrossCutting.Security;
 
+
 namespace SmartClinic.MVC.Controllers
 {
     public class HomeController : Controller
@@ -24,6 +25,7 @@ namespace SmartClinic.MVC.Controllers
 
         #region Actions
 
+        [Authorize]
         public ActionResult Index()
         {
             if (_userAppService.HasUserAuthenticated())
