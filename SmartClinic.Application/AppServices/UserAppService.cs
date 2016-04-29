@@ -50,12 +50,8 @@ namespace SmartClinic.Application.AppServices
 
         public void LogoutUser()
         {
-            if (HasUserAuthenticated())
-            {
-                SessionManager.LoggedUser = null;
-                FormsAuthentication.SignOut();
-            }
-
+            SessionManager.ClearSession();
+            FormsAuthentication.SignOut();
         }
 
         #endregion

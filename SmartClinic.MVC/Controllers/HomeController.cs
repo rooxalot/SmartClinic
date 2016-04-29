@@ -34,6 +34,7 @@ namespace SmartClinic.MVC.Controllers
             return RedirectToAction("Login");
         }
 
+        [AllowAnonymous]
         public ActionResult Login()
         {
             ViewBag.Title = "SmartClinic - Login";
@@ -43,6 +44,7 @@ namespace SmartClinic.MVC.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login(FormCollection form)
         {
             var login = form["Login"];
@@ -59,6 +61,7 @@ namespace SmartClinic.MVC.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult Logout()
         {
             _userAppService.LogoutUser();

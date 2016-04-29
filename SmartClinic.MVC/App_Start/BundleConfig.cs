@@ -50,7 +50,6 @@ namespace SmartClinic.MVC
                     "~/Scripts/SmartClinic/js/datepicker/daterangepicker.js",
                     "~/Scripts/SmartClinic/js/chartjs/chart.min.js",
                     "~/Scripts/SmartClinic/js/sparkline/jquery.sparkline.min.js",
-                    "~/Scripts/SmartClinic/js/custom.js",
                     "~/Scripts/SmartClinic/js/skycons/skycons.min.js",
                     "~/Scripts/SmartClinic/js/flot/jquery.flot.js",
                     "~/Scripts/SmartClinic/js/flot/jquery.flot.pie.js",
@@ -61,7 +60,8 @@ namespace SmartClinic.MVC
                     "~/Scripts/SmartClinic/js/flot/jquery.flot.stack.js",
                     "~/Scripts/SmartClinic/js/flot/curvedLines.js",
                     "~/Scripts/SmartClinic/js/flot/jquery.flot.resize.js",
-                    "~/Scripts/SmartClinic/js/pace/pace.min.js"
+                    "~/Scripts/SmartClinic/js/pace/pace.min.js",
+                    "~/Scripts/SmartClinic/js/custom.js"
                 ));
 
             #endregion

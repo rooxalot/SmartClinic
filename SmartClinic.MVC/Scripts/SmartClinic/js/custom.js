@@ -16,6 +16,22 @@ var URL = window.location,
 
 // Sidebar
 $(function () {
+
+    // TODO: This is some kind of easy fix, maybe we can improve this
+    var setContentHeight = function () {
+        // reset height
+        $RIGHT_COL.css('min-height', $(window).height());
+
+        var bodyHeight = $BODY.height(),
+            leftColHeight = $LEFT_COL.height() + $SIDEBAR_FOOTER.height(),
+            contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
+
+        // normalize content
+        contentHeight -= $NAV_MENU.height() + $FOOTER.height();
+
+        $RIGHT_COL.css('min-height', contentHeight);
+    };
+
     $SIDEBAR_MENU.find('li ul').slideUp();
     $SIDEBAR_MENU.find('li').removeClass('active');
 
@@ -77,21 +93,6 @@ $(function () {
     $(window).smartresize(function(){  
         setContentHeight();
     });
-
-    // TODO: This is some kind of easy fix, maybe we can improve this
-    var setContentHeight = function () {
-        // reset height
-        $RIGHT_COL.css('min-height', $(window).height());
-
-        var bodyHeight = $BODY.height(),
-            leftColHeight = $LEFT_COL.height() + $SIDEBAR_FOOTER.height(),
-            contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
-
-        // normalize content
-        contentHeight -= $NAV_MENU.height() + $FOOTER.height();
-
-        $RIGHT_COL.css('min-height', contentHeight);
-    };
 });
 
 // Panel toolbox
