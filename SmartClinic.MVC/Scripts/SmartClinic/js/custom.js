@@ -35,28 +35,37 @@ $(function () {
     $SIDEBAR_MENU.find('li ul').slideUp();
     $SIDEBAR_MENU.find('li').removeClass('active');
 
-    $SIDEBAR_MENU.find('li').on('click', function(ev) {
-        var link = $('a', this).attr('href');
+    //metodo ajustado para funcionar com <a> dentro dos <li> do menu lateral e possibilitar links e dropdonwlists dinmicos
+    $SIDEBAR_MENU.find('li a').on('click', function(ev) {
 
-        // prevent event bubbling on parent menu
-        if (link) {
-            ev.stopPropagation();
-        } 
-        // execute slidedown if parent menu
-        else {
-            if ($(this).is('.active')) {
-                $(this).removeClass('active');
-                $('ul', this).slideUp(function() {
-                    setContentHeight();
-                });
-            } else {
-                $SIDEBAR_MENU.find('li').removeClass('active');
-                $SIDEBAR_MENU.find('li ul').slideUp();
-                
-                $(this).addClass('active');
-                $('ul', this).slideDown(function() {
-                    setContentHeight();
-                });
+        var link = $(this).attr('href');
+        var linkId = $(this).attr('id');
+
+
+        if (link && linkId != null) {
+            //Do nothing and let the click event continue
+        } else {
+            // prevent event bubbling on parent menu
+            if (link && linkId === null) {
+                ev.stopPropagation();
+            }
+                // execute slidedown if parent menu
+            else {
+                var li = $(this).parent();
+                if ($(li).is('.active')) {
+                    $(li).removeClass('active');
+                    $('ul', li).slideUp(function () {
+                        setContentHeight();
+                    });
+                } else {
+                    $SIDEBAR_MENU.find('li').removeClass('active');
+                    $SIDEBAR_MENU.find('li ul').slideUp();
+
+                    $(li).addClass('active');
+                    $('ul', li).slideDown(function () {
+                        setContentHeight();
+                    });
+                }
             }
         }
     });

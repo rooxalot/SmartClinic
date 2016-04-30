@@ -4,6 +4,7 @@ using SmartClinic.Domain.Interfaces.DomainServices;
 using SmartClinic.Domain.Interfaces.UnitOfWork;
 using SmartClinic.Domain.ValueObjects;
 using System;
+using Newtonsoft.Json;
 
 namespace SmartClinic.Application.AppServices
 {
