@@ -140,6 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -575,6 +576,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -709,6 +712,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Scripts\SmartClinic\js\datatables\json\scroller-demo.json" />
     <Content Include="Scripts\SmartClinic\js\maps\us-unemployment.json" />
+    <Content Include="Views\Doctor\Index.cshtml" />
+    <Content Include="Views\Doctor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -725,6 +730,10 @@
     <ProjectReference Include="..\SmartClinic.Application\SmartClinic.Application.csproj">
       <Project>{e566eea2-c644-46b2-bcc8-eb1c366f33cf}</Project>
       <Name>SmartClinic.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartClinic.Domain\SmartClinic.Domain.csproj">
+      <Project>{2c0b9799-2532-4859-8424-8203a835a6ee}</Project>
+      <Name>SmartClinic.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\SmartClinic.Infrastructure.CrossCutting\SmartClinic.Infrastructure.CrossCutting.csproj">
       <Project>{6df339c6-21ba-4498-807c-4f15edfa8f1e}</Project>

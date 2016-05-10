@@ -28,6 +28,12 @@ namespace SmartClinic.Domain.DomainServices
 
         #region Services
 
+        /// <summary>
+        /// Realiza as validações para definir se o CRM do médico
+        /// </summary>
+        /// <param name="doctor">Entidade que irá receber o CRM</param>
+        /// <param name="crm">Objeto CRM que será atribuido ao médico</param>
+        /// <returns>Entidade com seu CRM atualizado</returns>
         public Doctor SetDoctorCrm(Doctor doctor, Crm crm)
         {
             var crmExists = _unitOfWork
@@ -42,6 +48,11 @@ namespace SmartClinic.Domain.DomainServices
             return doctor;
         }
 
+        /// <summary>
+        /// Realiza as validações para a desativação do médico no sistema
+        /// </summary>
+        /// <param name="doctor">Entidade a ser desativada</param>
+        /// <returns>Entidade com seu status já desativado</returns>
         public Doctor DeactivateDoctor(Doctor doctor)
         {
             var doctorAppointments = _unitOfWork.AppoitmentRepository.GetAppointmentsByDoctor(doctor).ToList();

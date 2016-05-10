@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SmartClinic.Application.AppModels.Doctor.DoctorModel>
+
+@{
+    ViewBag.Title = "Médicos";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="col-sm-2">
+    @Html.ActionLink("Adicionar médico", "Create", "Doctor", new { @class = "btn btn-success" })
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Médicos cadastrados</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li style="margin-left: 38px;">
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div id="doctorsDiv" class="x_content">
+            <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                <thead>
+                    <tr class="headings">
+                        <th>
+                            <input type="checkbox" id="check-all" class="flat">
+                        </th>
+                        <th class="column-title">Nome </th>
+                        <th class="column-title">Crm </th>
+                        <th class="column-title">Sexo </th>
+                        <th class="column-title">Ativo? </th>
+                        <th class="column-title text-center">Ação </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 0; }
+                    @foreach (var item in Model)
+                    {
+                        <tr class="@(i % 2 == 0 ? "even pointer" : "odd pointer")">
+                            <td class="a-center ">
+                                <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">@item.Name</td>
+                            <td class=" ">@(item.CrmCode + "/" + Enum.GetName(item.CrmUf.GetType(), item.CrmUf)) </td>
+                            <td class=" ">@(item.Sex == 0 ? "Masculino" : "Feminino") </td>
+                            <td class=" ">
+                                @(item.Active ? "Sim" : "Não") 
+                            </td>
+                            <td class="text-center">
+                                @Html.ActionLink("Editar", "Edit", "Doctor", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" }) 
+                                @Ajax.ActionLink("Deletar", "Delete", new { id = item.Id }, new AjaxOptions { HttpMethod = "POST", Confirm = "Deseja realmente excluir este médico?" }, new { @class = "btn btn-danger btn-xs" })
+                            </td>
+                        </tr>
+                        i += 1;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

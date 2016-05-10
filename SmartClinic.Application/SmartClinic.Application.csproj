@@ -53,6 +53,9 @@
     <Compile Include="AppServices\PacientAppService.cs" />
     <Compile Include="AppServices\SecretaryAppService.cs" />
     <Compile Include="AppServices\UserAppService.cs" />
+    <Compile Include="Mappings\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="Mappings\MappingConfig.cs" />
+    <Compile Include="Mappings\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

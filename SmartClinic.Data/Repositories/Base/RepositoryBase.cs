@@ -75,9 +75,9 @@ namespace SmartClinic.Data.Repositories.Base
 
         public void SaveOrAdd(T entity)
         {
-            var obj = Context.Set<T>().Find(entity.GetType().GetProperty("Id").GetValue(entity));
+            var obj = Get((Guid)entity.GetType().GetProperty("Id").GetValue(entity));
 
-            if (obj == null || Guid.Empty == (Guid) obj.GetType().GetProperty("Id").GetValue(entity))
+            if (obj == null || Guid.Empty == (Guid)obj.GetType().GetProperty("Id").GetValue(entity))
                 Add(entity);
             else
                 Update(entity);

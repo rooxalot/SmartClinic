@@ -46,6 +46,20 @@ namespace SmartClinic.Domain.ValueObjects
 
         #region Methods
 
+        public static Address CreateAddress(string publicPlace, string complement, string number, string neighborhood, string city, Uf uf)
+        {
+            var address = new Address();
+
+            address.SetPublicPlace(publicPlace);
+            address.SetComplement(complement);
+            address.SetNumber(number);
+            address.SetNeighborhood(neighborhood);
+            address.SetCity(city);
+            address.Uf = uf;
+
+            return address;
+        }
+
         public string GetFullAddress()
         {
             return string.Format("{0}, {1}, {2}, {3}, {4}, {5}", PublicPlace, Number, Complement, Neighborhood, City, Uf.ToString());
@@ -53,7 +67,7 @@ namespace SmartClinic.Domain.ValueObjects
 
         public void SetPublicPlace(string publicPlace)
         {
-            if(publicPlace.Length > PublicPlaceMaxLength)
+            if(!string.IsNullOrEmpty(publicPlace) && publicPlace.Length > PublicPlaceMaxLength)
                 throw new InvalidOperationException(string.Format("Rua/Logradouro deve possuir no máximo {0} caracteres", PublicPlaceMaxLength));
 
             PublicPlace = publicPlace;
@@ -61,7 +75,7 @@ namespace SmartClinic.Domain.ValueObjects
 
         public void SetComplement(string complement)
         {
-            if(complement.Length > ComplementMaxLength)
+            if(!string.IsNullOrEmpty(complement) && complement.Length > ComplementMaxLength)
                 throw new InvalidOperationException(string.Format("Complemento deve possuir no máximo {0} caracteres", ComplementMaxLength));
 
             Complement = complement;
@@ -69,19 +83,22 @@ namespace SmartClinic.Domain.ValueObjects
 
         public void SetNumber(string number)
         {
-            if(number.Length > NumberMaxLength)
+            if(!string.IsNullOrEmpty(number) && number.Length > NumberMaxLength)
                 throw new InvalidOperationException(string.Format("Número deve possuir no máximo {0} caracteres", NumberMaxLength));
 
-            int numeric;
-            if(!Int32.TryParse(number, out numeric))
-                throw new InvalidOperationException("O Numero do endereço deve ser um valor numérico");
+            if (!string.IsNullOrEmpty(number))
+            {
+                int numeric;
+                if (!Int32.TryParse(number, out numeric))
+                    throw new InvalidOperationException("O Numero do endereço deve ser um valor numérico");
+            }
 
             Number = number;
         }
 
         public void SetNeighborhood(string neighborhood)
         {
-            if(neighborhood.Length > NeighborhoodMaxLength)
+            if(!string.IsNullOrEmpty(neighborhood) && neighborhood.Length > NeighborhoodMaxLength)
                 throw new InvalidOperationException(string.Format("Bairro deve possuir no máximo {0} caracteres", NeighborhoodMaxLength));
 
             Neighborhood = neighborhood;
@@ -89,7 +106,7 @@ namespace SmartClinic.Domain.ValueObjects
 
         public void SetCity(string city)
         {
-            if(city.Length > CityMaxLength)
+            if(!string.IsNullOrEmpty(city) && city.Length > CityMaxLength)
                 throw new InvalidOperationException(string.Format("Cidade deve possuir no máximo {0} caracteres", CityMaxLength));
 
             City = city;

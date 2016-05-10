@@ -12,6 +12,7 @@ namespace SmartClinic.Domain.Entities.Business
         #region Constants
 
         public const int NameMaxLength = 150;
+        public const int NameMinLength = 3;
 
         #endregion
 
@@ -53,8 +54,8 @@ namespace SmartClinic.Domain.Entities.Business
             if(string.IsNullOrEmpty(name))
                 throw new InvalidOperationException("Nome do Médico não pode ser nulo ou vazio");
 
-            if(name.Length > NameMaxLength)
-                throw new InvalidOperationException(string.Format("O Nome do médico deve possuir no máximo {0} caratctes", NameMaxLength));
+            if(name.Length > NameMaxLength || name.Length < NameMinLength)
+                throw new InvalidOperationException(string.Format("O Nome do médico deve possuir entre {0} a {1} caratctes", NameMinLength, NameMaxLength));
 
             Name = name;
         }

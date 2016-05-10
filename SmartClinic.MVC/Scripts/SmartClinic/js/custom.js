@@ -321,7 +321,7 @@ function countChecked() {
     }
     var n = $(".bulk_action input[name='table_records']:checked").length;
     if (n > 0) {
-        $('.column-title').hide();
+        //$('.column-title').hide();
         $('.bulk-actions').show();
         $('.action-cnt').html(n + ' Records Selected');
     } else {

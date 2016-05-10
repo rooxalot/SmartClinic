@@ -43,6 +43,16 @@ namespace SmartClinic.Domain.ValueObjects
 
         #region Methods
 
+        public static Crm CreateCrm(string code, Uf uf)
+        {
+            var crm = new Crm();
+
+            crm.SetCode(code);
+            crm.Uf = uf;
+
+            return crm;
+        }
+
         public void SetCode(string code)
         {
             if (string.IsNullOrEmpty(code))

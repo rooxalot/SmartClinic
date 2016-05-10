@@ -12,6 +12,14 @@ namespace SmartClinic.Domain.ValueObjects
 
         #region Methods
 
+        public static Rg CreateRg(string rgCode)
+        {
+            var rg = new Rg();
+            rg.SetRg(rgCode);
+
+            return rg;
+        }
+
         public string GetFormatedRg()
         {
             if (Code == null)
@@ -26,6 +34,14 @@ namespace SmartClinic.Domain.ValueObjects
             return string.Format("{0}.{1}.{2}-{3}", rgStart, rgMiddle1, rgMiddle2, rgEnd);
         }
 
+        public void SetRg(string code)
+        {
+            if (!string.IsNullOrEmpty(code) && (code.Length < RgMinLength || code.Length > RgMaxLength))
+                throw new InvalidOperationException(string.Format("O Rg deve possuir entre {0} e {1} caracteres", RgMinLength, RgMaxLength));
+
+            Code = string.IsNullOrEmpty(code) ? 0 : Convert.ToInt64(code);
+        }
+
         #endregion
 
         #region Constants
@@ -37,27 +53,17 @@ namespace SmartClinic.Domain.ValueObjects
 
         #region Constructor
 
-        public Rg()
-        {
-            
-        }
+        public Rg() {}
 
         public Rg(string code)
         {
-            if(code == string.Empty)
-                throw new InvalidOperationException("O Código do Rg não pode ser vazio");
-
-            if(code.Length < RgMinLength || code.Length > RgMaxLength)
-                throw new InvalidOperationException(string.Format("O Rg deve possuir entre {0} e {1} caracteres", RgMinLength, RgMaxLength));
-
-            Code = Convert.ToInt64(code);
+            SetRg(code);
         }
 
         public Rg(long code)
         {
             if (code.ToString().Length < RgMinLength || code.ToString().Length > RgMaxLength)
                 throw new InvalidOperationException(string.Format("O Rg deve possuir entre {0} e {1} caracteres", RgMinLength, RgMaxLength));
-
 
             Code = code;
         }
