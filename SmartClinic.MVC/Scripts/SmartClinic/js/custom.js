@@ -90,13 +90,13 @@ $(function () {
     });
 
     // check active menu
-    $SIDEBAR_MENU.find('a[href="' + URL + '"]').parent('li').addClass('current-page');
+    //$SIDEBAR_MENU.find('a[href="' + URL + '"]').parent('li').addClass('current-page');
 
-    $SIDEBAR_MENU.find('a').filter(function () {
-        return this.href == URL;
-    }).parent('li').addClass('current-page').parent('ul').slideDown(function() {
-        setContentHeight();
-    }).parent().addClass('active');
+    //$SIDEBAR_MENU.find('a').filter(function () {
+    //    return this.href == URL;
+    //}).parent('li').addClass('current-page').parent('ul').slideDown(function() {
+    //    setContentHeight();
+    //}).parent().addClass('active');
 
     // recompute content when resizing
     $(window).smartresize(function(){  

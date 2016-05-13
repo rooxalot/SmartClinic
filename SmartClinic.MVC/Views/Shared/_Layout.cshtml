@@ -11,6 +11,8 @@
 
     <!-- JQuery -->
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
 </head>
 
 <body class="nav-md">
@@ -47,24 +49,12 @@
                                 <li>
                                     <a id="doctorsLink" href="@Url.Action("Index", "Doctor")" class="col-sm-10"><i class="fa fa-edit"></i> Médicos</a>
                                     <a class="col-sm-2" style="margin-bottom: 0; height: 45px;"><span class="fa fa-chevron-down"></span></a>
-                                    <ul style="display: none">
+                                    <ul class="nav child_menu" style="display: none">
                                         <li>
-                                            <a href="form.html">General Form</a>
+                                            @Html.ActionLink("Listagem de médicos", "Index", "Doctor")
                                         </li>
                                         <li>
-                                            <a href="form_advanced.html">Advanced Components</a>
-                                        </li>
-                                        <li>
-                                            <a href="form_validation.html">Form Validation</a>
-                                        </li>
-                                        <li>
-                                            <a href="form_wizards.html">Form Wizard</a>
-                                        </li>
-                                        <li>
-                                            <a href="form_upload.html">Form Upload</a>
-                                        </li>
-                                        <li>
-                                            <a href="form_buttons.html">Form Buttons</a>
+                                            @Html.ActionLink("Registrar novo médico", "Create", "Doctor")
                                         </li>
                                     </ul>
                                 </li>

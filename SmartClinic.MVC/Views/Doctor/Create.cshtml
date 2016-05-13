@@ -1,0 +1,110 @@
+﻿@model SmartClinic.Application.AppModels.Doctor.DoctorModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<div class="col-md-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_content">
+            <h4>Criação de Médico</h4>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Nome</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">RG</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.RgCode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.RgCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Crm</label>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            @Html.TextBoxFor(model => model.CrmCode, new { @class = "form-control", @placeholder = "Número do CRM" })
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            @Html.EnumDropDownListFor(model => model.CrmUf, new { @class = "form-control", @placeholder = "UF do CRM" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Logradouro</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PublicPlace, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PublicPlace, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Numero</label>
+                        <div class="col-md-2">
+                            @Html.TextBoxFor(model => model.Number, new { @class = "form-control", @placeholder = "Número" })
+                            @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+                        </div>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Complemento</label>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(model => model.Complement, new { @class = "form-control", @placeholder = "Complemento" })
+                            @Html.ValidationMessageFor(model => model.PublicPlace, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Bairro</label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Neighborhood, new { @class = "form-control", @placeholder = "Bairro" })
+                            @Html.ValidationMessageFor(model => model.PublicPlace, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Cidade</label>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.City, new { @class = "form-control", @placeholder = "Cidade" })
+                            @Html.ValidationMessageFor(model => model.PublicPlace, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Estado</label>
+                        <div class="col-md-9">
+                            @Html.EnumDropDownListFor(model => model.Uf)
+                            @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row col-md-12" style="padding-left: 0px;">
+                        <div class="checkbox" style="padding-left: 0;">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-10" style="font-weight: bold;">Ativo?</label>
+                            <label style="margin-left: 12px;">
+                                @Html.CheckBoxFor(model => model.Active, new { @class = "form-control flat" })
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Adicionar Médico" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

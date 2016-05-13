@@ -13,7 +13,7 @@ namespace SmartClinic.Application.AppModels.Doctor
         //doctor info
         public Guid Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Nome é obrigatório")]
         [StringLength(Domain.Entities.Business.Doctor.NameMaxLength, MinimumLength = Domain.Entities.Business.Doctor.NameMinLength, 
             ErrorMessage = "O campo nome possui um número incorreto de caracteres")]
         public string Name { get; set; }

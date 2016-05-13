@@ -46,6 +46,20 @@ namespace SmartClinic.Application.AppServices
         }
 
         /// <summary>
+        /// Obtem uma lista de modelos cujo o médico esteja ativo
+        /// </summary>
+        /// <returns>IEnumerable de DoctorModel</returns>
+        public IEnumerable<DoctorModel> GetActiveDoctors()
+        {
+            using (_unitOfWork)
+            {
+                var doctors = _unitOfWork.DoctorRepository.GetActiveDoctors();
+                var mappedDoctors = Mapper.Map<IEnumerable<DoctorModel>>(doctors);
+                return mappedDoctors;
+            }
+        }
+
+        /// <summary>
         /// Retorna os dados do médico com o ID informado
         /// </summary>
         /// <param name="id">ID do médico </param>
@@ -60,6 +74,21 @@ namespace SmartClinic.Application.AppServices
             }
         }
 
+        /// <summary>
+        /// Realiza o cadastro de um médico na aplicação a partir dos dados passados nos parâmetros
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="rg"></param>
+        /// <param name="crmCode"></param>
+        /// <param name="crmUf"></param>
+        /// <param name="active"></param>
+        /// <param name="sex"></param>
+        /// <param name="publicPlace"></param>
+        /// <param name="complement"></param>
+        /// <param name="number"></param>
+        /// <param name="neighborhood"></param>
+        /// <param name="city"></param>
+        /// <param name="addressUf"></param>
         public void RegisterDoctor(string name, string rg, string crmCode, Uf crmUf, bool active, Sex sex,
             string publicPlace, string complement, string number, string neighborhood, string city, Uf addressUf)
         {
@@ -71,6 +100,22 @@ namespace SmartClinic.Application.AppServices
             using (_unitOfWork)
             {
                 doctor = _doctorManager.SetDoctorCrm(doctor, doctorCrm);
+
+                _unitOfWork.DoctorRepository.Add(doctor);
+                _unitOfWork.Commit();
+            }
+        }
+
+        /// <summary>
+        /// Realiza o cadastro de um médico na aplicação a partir de um DoctorModel
+        /// </summary>
+        /// <param name="model"></param>
+        public void RegisterDoctor(DoctorModel model)
+        {
+            var doctor = Mapper.Map<DoctorModel, Doctor>(model);
+            using (_unitOfWork)
+            {
+                doctor = _doctorManager.SetDoctorCrm(doctor, Crm.CreateCrm(model.CrmCode, model.CrmUf));
 
                 _unitOfWork.DoctorRepository.Add(doctor);
                 _unitOfWork.Commit();
@@ -98,6 +143,10 @@ namespace SmartClinic.Application.AppServices
             }
         }
 
+        /// <summary>
+        /// Realiza a remoção(inativação) do médico no sistema a partir do ID do mesmo
+        /// </summary>
+        /// <param name="doctorID">ID do médico a ser removido</param>
         public void RemoveDoctor(Guid doctorID)
         {
             using (_unitOfWork)

@@ -28,7 +28,7 @@ namespace SmartClinic.Infrastructure.CrossCutting.Validations
         /// <param name="viewModel">ViewModel a veificado.</param>
         /// <param name="results">Parâmetro de saída para que seja possível analisar os resultados de validação do ViewModel</param>
         /// <returns>Retorna um booleano informando se o objeto está valido ou não.</returns>
-        public static bool Validate(object viewModel, out IEnumerable<ValidationResult> results)
+        public static bool Validate(object viewModel, out List<ValidationResult> results)
         {
             var validationResults = new List<ValidationResult>();
             var validationContext = new ValidationContext(viewModel, null, null);

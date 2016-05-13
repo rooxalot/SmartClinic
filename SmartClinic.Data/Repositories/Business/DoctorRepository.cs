@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using SmartClinic.Data.Context;
 using SmartClinic.Data.Repositories.Base;
@@ -16,6 +17,11 @@ namespace SmartClinic.Data.Repositories.Business
         {
         }
 
-        public SmartClinicContext SmartClinicContext => Context as SmartClinicContext;
+        public SmartClinicContext SmartClinicContext => this.Context as SmartClinicContext;
+
+        public IEnumerable<Doctor> GetActiveDoctors()
+        {
+            return SmartClinicContext.Doctors.Where(d => d.Active).ToList();
+        }
     }
 }
