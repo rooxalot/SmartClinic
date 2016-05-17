@@ -21,7 +21,9 @@ namespace SmartClinic.Data.Repositories.Business
 
         public IEnumerable<Doctor> GetActiveDoctors()
         {
-            return SmartClinicContext.Doctors.Where(d => d.Active).ToList();
+            return SmartClinicContext.Doctors.Where(d => d.Active)
+                .OrderByDescending(d => d.CreatedOn)
+                .ToList();
         }
     }
 }

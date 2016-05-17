@@ -221,6 +221,7 @@
     <Content Include="Content\SmartClinic\css\nprogress.css" />
     <Content Include="Content\SmartClinic\css\progressbar\bootstrap-progressbar-3.3.0.css" />
     <Content Include="Content\SmartClinic\css\select\select2.min.css" />
+    <Content Include="Content\SmartClinic\css\sweetalert.css" />
     <Content Include="Content\SmartClinic\css\switchery\switchery.min.css" />
     <Content Include="Content\SmartClinic\fonts\css\font-awesome.css" />
     <Content Include="Content\SmartClinic\fonts\css\font-awesome.min.css" />
@@ -607,6 +608,8 @@
     <Content Include="Scripts\SmartClinic\js\datatables\dataTables.responsive.min.js" />
     <Content Include="Scripts\SmartClinic\js\datatables\dataTables.scroller.min.js" />
     <Content Include="Scripts\SmartClinic\js\datatables\fixedHeader.bootstrap.min.css" />
+    <Content Include="Scripts\SmartClinic\js\datatables\jquery.dataTables.css" />
+    <Content Include="Scripts\SmartClinic\js\datatables\jquery.dataTables.js" />
     <Content Include="Scripts\SmartClinic\js\datatables\jquery.dataTables.min.css" />
     <Content Include="Scripts\SmartClinic\js\datatables\jquery.dataTables.min.js" />
     <Content Include="Scripts\SmartClinic\js\datatables\jszip.min.js" />
@@ -691,6 +694,7 @@
     <Content Include="Scripts\SmartClinic\js\sidebar\sidebarEffects.js" />
     <Content Include="Scripts\SmartClinic\js\skycons\skycons.min.js" />
     <Content Include="Scripts\SmartClinic\js\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Scripts\SmartClinic\js\sweetalert-dev.js" />
     <Content Include="Scripts\SmartClinic\js\switchery\switchery.min.js" />
     <Content Include="Scripts\SmartClinic\js\tags\jquery.tagsinput.min.js" />
     <Content Include="Scripts\SmartClinic\js\textarea\autosize.min.js" />
@@ -715,6 +719,8 @@
     <Content Include="Views\Doctor\Index.cshtml" />
     <Content Include="Views\Doctor\Edit.cshtml" />
     <Content Include="Views\Doctor\Create.cshtml" />
+    <Content Include="Views\Doctor\Detail.cshtml" />
+    <Content Include="Settings\Enviroment.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

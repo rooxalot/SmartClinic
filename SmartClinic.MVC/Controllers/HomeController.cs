@@ -11,14 +11,16 @@ namespace SmartClinic.MVC.Controllers
         #region Properties
 
         private readonly UserAppService _userAppService;
+        private readonly ClinicAppService _clinicAppService;
 
         #endregion
 
         #region Constructor
 
-        public HomeController(UserAppService userAppService)
+        public HomeController(UserAppService userAppService, ClinicAppService clinicAppService)
         {
             _userAppService = userAppService;
+            _clinicAppService = clinicAppService;
         }
 
         #endregion
@@ -53,7 +55,10 @@ namespace SmartClinic.MVC.Controllers
             var authenticatedUser = _userAppService.Authenticate(login, password);
 
             if (authenticatedUser)
+            {
+                _clinicAppService.RegisterClinic();
                 return RedirectToAction("Index");
+            }
             else
             {
                 ViewBag.ShowErrorDiv = true;

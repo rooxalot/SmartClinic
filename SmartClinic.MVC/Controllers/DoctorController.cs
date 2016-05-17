@@ -35,6 +35,12 @@ namespace SmartClinic.MVC.Controllers
             return View(doctors);
         }
 
+        public ActionResult Detail(Guid id)
+        {
+            var doctor = _doctorAppService.GetDoctorById(id);
+            return View(doctor);
+        }
+
         //Criação de médico
         public ActionResult Create()
         {
@@ -73,10 +79,16 @@ namespace SmartClinic.MVC.Controllers
 
         //Exclusão de médico
         [HttpPost]
-        public ActionResult Delete(Guid id)
+        public void Delete(Guid id)
         {
-            _doctorAppService.RemoveDoctor(id);
-            return View("Index");
+            try
+            {
+                _doctorAppService.RemoveDoctor(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         #endregion

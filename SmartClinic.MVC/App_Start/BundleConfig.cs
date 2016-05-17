@@ -38,7 +38,9 @@ namespace SmartClinic.MVC
                     "~/Content/SmartClinic/css/custom.css",
                     "~/Content/SmartClinic/css/maps/jquery-jvectormap-2.0.3.css",
                     "~/Content/SmartClinic/css/icheck/flat/green.css",
-                    "~/Content/SmartClinic/css/floatexamples.css"
+                    "~/Content/SmartClinic/css/floatexamples.css",
+                    "~/Content/SmartClinic/css/sweetalert.css",
+                    "~/Scripts/SmartClinic/js/datatables/jquery.dataTables.css"
                     ));
 
 
@@ -62,6 +64,10 @@ namespace SmartClinic.MVC
                     "~/Scripts/SmartClinic/js/flot/curvedLines.js",
                     "~/Scripts/SmartClinic/js/flot/jquery.flot.resize.js",
                     "~/Scripts/SmartClinic/js/pace/pace.min.js",
+                    "~/Scripts/SmartClinic/js/sweetalert-dev.js",
+                    "~/Scripts/SmartClinic/js/datatables/jquery.dataTables.js",
+                    "~/Scripts/SmartClinic/js/datatables/dataTables.bootstrap.js",
+                    "~/Scripts/SmartClinic/js/datatables/dataTables.buttons.min.js",
                     "~/Scripts/SmartClinic/js/custom.js"
                 ));
 

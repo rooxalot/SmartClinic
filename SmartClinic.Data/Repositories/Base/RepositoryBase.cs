@@ -43,6 +43,9 @@ namespace SmartClinic.Data.Repositories.Base
         public T Get(Guid id)
         {
             var entity = Context.Set<T>().Find(id);
+            if(entity == null)
+                throw new Exception(string.Format("Não foi encontrado nenhuma entidade com o ID {0}", id));
+
             return entity;
         }
 

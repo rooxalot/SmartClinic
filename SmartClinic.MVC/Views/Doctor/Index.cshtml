@@ -6,7 +6,13 @@
 
 <h1>@ViewBag.Title</h1>
 
-<div class="col-sm-2">
+<script>
+    $(document).ready(function () {
+        $('#doctorsTable').DataTable();
+    });
+</script>
+
+<div class="col-sm-4">
     @Html.ActionLink("Adicionar médico", "Create", "Doctor", null, new { @class = "btn btn-success" })
 </div>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -23,42 +29,47 @@
         <div id="doctorsDiv" class="x_content">
             @if (Model.Count() > 0)
             {
-                <table id="doctorsTable" class="table table-striped responsive-utilities jambo_table bulk_action">
-                    <thead>
-                        <tr class="headings">
-                            <th>
-                                <input type="checkbox" id="check-all" class="flat">
-                            </th>
-                            <th class="column-title">Nome </th>
-                            <th class="column-title">Crm </th>
-                            <th class="column-title">Sexo </th>
-                            <th class="column-title">Ativo? </th>
-                            <th class="column-title text-center">Ação </th>
+            <table id="doctorsTable" class="table table-striped responsive-utilities jambo_table bulk_action">
+                <thead>
+                    <tr class="headings">
+                        <th>
+                            <input type="checkbox" id="check-all" class="flat">
+                        </th>
+                        <th class="column-title">Nome </th>
+                        <th class="column-title">Crm </th>
+                        <th class="column-title">Sexo </th>
+                        <th class="column-title">Ativo? </th>
+                        <th class="column-title">Data de criação </th>
+                        <th class="column-title text-center">Ação </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 0; }
+                    @foreach (var item in Model)
+                    {
+                        <tr id="doctorRow" class="@(i % 2 == 0 ? "even pointer" : "odd pointer")">
+                            <td class="a-center ">
+                                <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">@item.Name</td>
+                            <td class=" ">@(item.CrmCode + "/" + Enum.GetName(item.CrmUf.GetType(), item.CrmUf)) </td>
+                            <td class=" ">@(item.Sex == 0 ? "Masculino" : "Feminino") </td>
+                            <td class=" ">
+                                @(item.Active ? "Sim" : "Não")
+                            </td>
+                            <td>
+                                @item.CreatedOn.ToString("dd/MM/yyyy")
+                            </td>
+                            <td class="text-center">
+                                @Html.ActionLink("Detalhes", "Detail", "Doctor", new { id = item.Id }, new { @class = "btn btn-success btn-xs" })
+                                @Html.ActionLink("Editar", "Edit", "Doctor", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                                @Ajax.ActionLink("Inativar", "Delete", new { id = item.Id }, new AjaxOptions { HttpMethod = "POST", Confirm = "Deseja prosseguir?", OnComplete = "swal('Sucesso', 'Médico inativado com sucesso', 'success')" }, new { @class = "btn btn-danger btn-xs" })
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @{ int i = 0; }
-                        @foreach (var item in Model)
-                        {
-                            <tr class="@(i % 2 == 0 ? "even pointer" : "odd pointer")">
-                                <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">@item.Name</td>
-                                <td class=" ">@(item.CrmCode + "/" + Enum.GetName(item.CrmUf.GetType(), item.CrmUf)) </td>
-                                <td class=" ">@(item.Sex == 0 ? "Masculino" : "Feminino") </td>
-                                <td class=" ">
-                                    @(item.Active ? "Sim" : "Não")
-                                </td>
-                                <td class="text-center">
-                                    @Html.ActionLink("Editar", "Edit", "Doctor", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
-                                    @Ajax.ActionLink("Inativar", "Delete", new { id = item.Id }, new AjaxOptions { HttpMethod = "POST", Confirm = "Deseja realmente inativar este médico?", OnComplete = "alert('Médico inativado com sucesso'); location.reload();" }, new { @class = "btn btn-danger btn-xs" })
-                                </td>
-                            </tr>
-                            i += 1;
-                        }
-                    </tbody>
-                </table>
+                        i += 1;
+                    }
+                </tbody>
+            </table>
             }
             else
             {
@@ -69,4 +80,5 @@
         </div>
     </div>
 </div>
+
 

@@ -10,11 +10,13 @@ namespace SmartClinic.Application.AppModels.Doctor
 {
     public class DoctorModel
     {
-        //doctor info
+        #region Doctor Info
+
+        //Doctor's info
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é obrigatório")]
-        [StringLength(Domain.Entities.Business.Doctor.NameMaxLength, MinimumLength = Domain.Entities.Business.Doctor.NameMinLength, 
+        [StringLength(Domain.Entities.Business.Doctor.NameMaxLength, MinimumLength = Domain.Entities.Business.Doctor.NameMinLength,
             ErrorMessage = "O campo nome possui um número incorreto de caracteres")]
         public string Name { get; set; }
 
@@ -22,14 +24,23 @@ namespace SmartClinic.Application.AppModels.Doctor
             ErrorMessage = "O campo Rg possui um número incorreto de caracteres")]
         public string RgCode { get; set; }
 
-        
         public Sex Sex { get; set; }
 
-        //doctor's crm info
+        //Doctor's crm info
+        [Required(ErrorMessage = "O Código do Crm é obrigatório")]
         [StringLength(Domain.ValueObjects.Crm.CrmMaxLength, ErrorMessage = "O CRM possui um número incorreto de digitos")]
         public string CrmCode { get; set; }
 
+        [Required(ErrorMessage = "A UF do Crm é obrigatória")]
         public Uf CrmUf { get; set; }
+
+        public bool Active { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        #endregion
+
+        #region Address Info
 
         //doctor's address
         public string PublicPlace { get; set; }
@@ -39,7 +50,7 @@ namespace SmartClinic.Application.AppModels.Doctor
         public string City { get; set; }
         public Uf Uf { get; set; }
 
-        //doctor's state
-        public bool Active { get; set; }
+        #endregion
+        
     }
 }

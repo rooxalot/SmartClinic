@@ -23,8 +23,9 @@
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="@Url.Action("Index", "Home")" class="site_title">
                             <i class="fa fa-plus"></i>
-                            <span>Smart Clinic</span>
+                            <span>@SmartClinic.Infrastructure.CrossCutting.Security.SessionManager.Clinic.Name.ToString()</span>
                         </a>
+                        <small class="col-sm-offset-1">@SmartClinic.Infrastructure.CrossCutting.Security.SessionManager.Clinic.Header.ToString()</small>
                     </div>
                     <div class="clearfix"></div>
                     <div>
